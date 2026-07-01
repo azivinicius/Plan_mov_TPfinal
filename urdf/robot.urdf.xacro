@@ -3,11 +3,11 @@
   
   <link name="base_link">
     <visual>
-      <geometry><cylinder radius="0.035" length="0.05"/></geometry>
+      <geometry><cylinder radius="0.071" length="0.05"/></geometry>
       <material name="blue"><color rgba="0 0 1 1"/></material>
     </visual>
     <collision>
-      <geometry><cylinder radius="0.035" length="0.05"/></geometry>
+      <geometry><cylinder radius="0.071" length="0.05"/></geometry>
     </collision>
     <inertial>
       <mass value="1.0"/>

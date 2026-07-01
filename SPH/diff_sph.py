@@ -12,7 +12,6 @@ from nav_msgs.msg import Odometry, Path, OccupancyGrid
 
 # Import your custom modules 
 from SPH.particle import Particle 
-# from SPH.potential import Potential 
 from SPH.potential2 import Potential 
 
 class Diff_SPH(Node): 
@@ -38,9 +37,9 @@ class Diff_SPH(Node):
         self.grid = None 
           
         # --- 3. ROBOT STATE AND CONTROL GAINS --- 
-        # Control gains for point-mass regulation 
-        self.d = 0.3  # Near-zero offset for punctual control 
-        self.kx = 1.0   # Increase proportional gain for faster point tracking 
+
+        self.d = 0.3 
+        self.kx = 1.0  
         self.ky = 1.0 
         self.kv = 1.0 
         self.kw = 1.0 
@@ -82,13 +81,7 @@ class Diff_SPH(Node):
         # --- 5. ROS 2 PUBLISHERS & SUBSCRIBERS --- 
         self.pubs = [] 
         self.subs = [] 
-          
-        # Inicialize com listas vazias
-        self.pubs = []
-        self.subs = []
-        
-        # Crie os publishers/subscribers DEPOIS, mas garanta que o nó foi totalmente instanciado
-        # Ou melhor, use um timer curto para verificar se os robôs estão presentes
+
         self.create_timer(1.0, self.setup_publishers) 
 
     def setup_publishers(self):
@@ -118,7 +111,6 @@ class Diff_SPH(Node):
             siny_cosp = 2 * (q.w * q.z + q.x * q.y) 
             cosy_cosp = 1 - 2 * (q.y * q.y + q.z * q.z) 
             self.robot_theta[index] = math.atan2(siny_cosp, cosy_cosp) 
-            print(f"Callback recebido para robô {index}: {msg.pose.pose.position.x}") 
         return odom_callback 
 
     def map_callback(self, msg: OccupancyGrid): 
@@ -168,11 +160,6 @@ class Diff_SPH(Node):
 
     # --- MAIN CONTROL LOOP --- 
     def control_loop(self): 
-        print 
-        print(f"Robô 0 pos atual: {self.robot_x[0]}") 
-        print(f"Robô 1 pos atual: {self.robot_x[1]}") 
-        print(f"Robô 2 pos atual: {self.robot_x[2]}") 
-        print(f"Robô 3 pos atual: {self.robot_x[3]}") 
         # Registro de tempo  
         tempo_atual = self.get_clock().now().nanoseconds / 1e9 
         self.hist_tempo.append(tempo_atual) 
@@ -182,11 +169,9 @@ class Diff_SPH(Node):
             self.particles[i].x = self.robot_x[i] 
             self.particles[i].y = self.robot_y[i] 
             self.particles[i].ext_force = self.pot.force(self.particles[i].x, self.particles[i].y) 
+            # # TESTE PARA COMPORTAMENTO SEM FORÇA
             # self.particles[i].ext_force = [0.0, 0.0] 
-            f_x, f_y = self.pot.force(self.particles[i].x, self.particles[i].y) 
-
-            print(f"Robô {i} | Posição: ({self.particles[i].x:.2f}, {self.particles[i].y:.2f}) | Força: ({f_x:.4f}, {f_y:.4f})") 
-
+            
         # Atualização da física SPH 
         particulas_dinamicas = [p for p in self.particles if not getattr(p, 'fixed', False)] 
         new_rhos = [p.next_rho(self.particles) for p in particulas_dinamicas] 
@@ -200,38 +185,6 @@ class Diff_SPH(Node):
           
         for p, dvdt, e in zip(particulas_dinamicas, dvdts, es): 
             p.update_particle(p.rho, p.P, dvdt, e, self.dt) 
-
-        # # 2. FECHAMENTO DE MALHA (Onde o robô persegue a partícula) 
-        # for i in range(self.num_robots): 
-        #     # Waypoint gerado pela partícula 
-        #     ref_x, ref_y = self.particles[i].x, self.particles[i].y 
-        #     rx, ry, rtheta = self.robot_x[i], self.robot_y[i], self.robot_theta[i] 
-
-        #     # Vetor erro 
-        #     erro_x = ref_x - rx 
-        #     erro_y = ref_y - ry 
-              
-        #     dist = math.hypot(erro_x, erro_y) 
-        #     ang_erro = math.atan2(erro_y, erro_x) - rtheta 
-        #     ang_erro = (ang_erro + math.pi) % (2 * math.pi) - math.pi 
-              
-        #     # Controle Proporcional 
-        #     v_cmd = self.kv * dist 
-        #     w_cmd = self.kw * ang_erro 
-
-        #     # --- HISTÓRICO MANTIDO --- 
-        #     self.hist_x_rob[i].append(rx) 
-        #     self.hist_y_rob[i].append(ry) 
-        #     # Salvando os dados da partícula (o waypoint) para seus gráficos 
-        #     self.hist_rho[i].append(self.particles[i].rho) 
-        #     self.hist_P[i].append(self.particles[i].P) 
-        #     self.hist_vel[i].append(self.particles[i].vel_norm())  
-
-        #     # Publicação 
-        #     twist = Twist() 
-        #     twist.linear.x = float(np.clip(v_cmd, -0.5, 0.5)) 
-        #     twist.angular.z = float(np.clip(w_cmd, -1.0, 1.0)) 
-        #     self.pubs[i].publish(twist) 
 
         # 2. COMPUTE AND PUBLISH ROBOT COMMANDS (Controle por aceleração/força) 
         for i in range(self.num_robots): 
@@ -266,7 +219,6 @@ class Diff_SPH(Node):
             twist.angular.z = float(np.clip(w_ref, -1.0, 1.0)) 
             self.pubs[i].publish(twist) 
 
-    # --- NEW CODE: PLOT RESULTS METHOD --- 
     def plot_results(self): 
         """Generates and displays historical performance charts for all drones.""" 
         if not self.hist_tempo: 
@@ -306,7 +258,7 @@ class Diff_SPH(Node):
         plt.grid(True) 
         plt.axis('equal') 
 
-        # --- Graph 2: SPH Density (Rho) for Each Drone --- 
+        # --- Graph 2: SPH Density (Rho) --- 
         plt.subplot(2, 2, 2) 
         for i in range(self.num_robots): 
             plt.plot(t, self.hist_rho[i], linewidth=1.5, label=f'Robô {i}') 
@@ -315,7 +267,7 @@ class Diff_SPH(Node):
         plt.ylabel('Densidade') 
         plt.grid(True) 
 
-        # --- Graph 3: SPH Pressure (P) for Each Drone --- 
+        # --- Graph 3: SPH Pressure (P) --- 
         plt.subplot(2, 2, 3) 
         for i in range(self.num_robots): 
             plt.plot(t, self.hist_P[i], linewidth=1.5, label=f'Robô {i}') 
@@ -324,7 +276,7 @@ class Diff_SPH(Node):
         plt.ylabel('Pressão') 
         plt.grid(True) 
 
-        # --- Graph 4: SPH Velocity Magnitude for Each Drone --- 
+        # --- Graph 4: SPH Velocity Magnitude --- 
         plt.subplot(2, 2, 4) 
         for i in range(self.num_robots): 
             plt.plot(t, self.hist_vel[i], linewidth=1.5, label=f'Robô {i}') 

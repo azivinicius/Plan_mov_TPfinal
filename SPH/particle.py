@@ -68,7 +68,7 @@ class Particle:
         self.x = x
         self.y = y
 
-        self.h = 10
+        self.h = 1
 
         self.m = m
         self.rho = 1000.0
