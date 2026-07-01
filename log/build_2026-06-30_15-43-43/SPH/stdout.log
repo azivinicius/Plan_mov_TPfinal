@@ -1,0 +1,16 @@
+running develop
+running egg_info
+writing SPH.egg-info/PKG-INFO
+writing dependency_links to SPH.egg-info/dependency_links.txt
+writing entry points to SPH.egg-info/entry_points.txt
+writing requirements to SPH.egg-info/requires.txt
+writing top-level names to SPH.egg-info/top_level.txt
+reading manifest file 'SPH.egg-info/SOURCES.txt'
+writing manifest file 'SPH.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH.egg-link (link to .)
+Installing diff_sph script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+Installing occupancy_grid script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+
+Installed /home/azivinicius/ros2_ws/src/SPH/build/SPH
+running symlink_data

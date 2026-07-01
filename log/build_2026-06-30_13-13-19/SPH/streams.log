@@ -1,0 +1,47 @@
+[6.455s] Invoking command in '/home/azivinicius/ros2_ws/src/SPH/build/SPH': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/azivinicius/ros2_ws/src/SPH/build/SPH/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/azivinicius/ros2_ws/src/SPH/build/SPH/build --no-deps symlink_data
+[8.461s] running develop
+[9.719s] running egg_info
+[9.720s] creating SPH.egg-info
+[9.838s] writing SPH.egg-info/PKG-INFO
+[9.839s] writing dependency_links to SPH.egg-info/dependency_links.txt
+[9.839s] writing entry points to SPH.egg-info/entry_points.txt
+[9.840s] writing requirements to SPH.egg-info/requires.txt
+[9.840s] writing top-level names to SPH.egg-info/top_level.txt
+[9.841s] writing manifest file 'SPH.egg-info/SOURCES.txt'
+[10.083s] reading manifest file 'SPH.egg-info/SOURCES.txt'
+[10.086s] writing manifest file 'SPH.egg-info/SOURCES.txt'
+[10.207s] running build_ext
+[10.207s] Creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH.egg-link (link to .)
+[10.209s] Installing diff_sph script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+[10.210s] Installing occupancy_grid script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+[10.211s] 
+[10.212s] Installed /home/azivinicius/ros2_ws/src/SPH/build/SPH
+[10.212s] running symlink_data
+[10.213s] creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/ament_index
+[10.214s] creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/ament_index/resource_index
+[10.215s] creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/ament_index/resource_index/packages
+[10.215s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/resource/SPH -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/ament_index/resource_index/packages
+[10.216s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/package.xml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH
+[10.216s] creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/launch
+[10.216s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/launch/diff.launch.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/launch
+[10.217s] creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds
+[10.217s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/worlds/tp2_arena01.world -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds
+[10.218s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/worlds/tp2_complex.world -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds
+[10.218s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/worlds/tp2_arena.world -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds
+[10.219s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/worlds/tp2_arena02.world -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds
+[10.219s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/worlds/tp2_arena03.world -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds
+[10.220s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/worlds/tp2_maze.world -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds
+[10.220s] creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+[10.221s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/maps/map_arena.pgm -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+[10.221s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/maps/map_complex.yaml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+[10.221s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/maps/map_arena.yaml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+[10.222s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/maps/map_maze.pgm -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+[10.222s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/maps/map_maze.yaml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+[10.223s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/maps/map_arena_old.yaml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+[10.223s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/maps/map_mazeold.yaml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+[10.224s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/maps/map_arena_old.pgm -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+[10.224s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/maps/map_mazeold.pgm -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+[10.225s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/maps/map_complex.pgm -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+[10.225s] creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/urdf
+[10.225s] symbolically linking /home/azivinicius/ros2_ws/src/SPH/build/SPH/urdf/robot.urdf.xacro -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/urdf
+[10.343s] Invoked command in '/home/azivinicius/ros2_ws/src/SPH/build/SPH' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/azivinicius/ros2_ws/src/SPH/build/SPH/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/azivinicius/ros2_ws/src/SPH/build/SPH/build --no-deps symlink_data

@@ -1,0 +1,7 @@
+image: map_complex.pgm
+resolution: 0.02          # meters per pixel (e.g., 5 cm)
+origin: [-10.0, -10.0, 0.0]
+occupied_thresh: 0.65
+free_thresh: 0.196
+negate: 0                 # 0 = white free, black occupied
+frame_id: map

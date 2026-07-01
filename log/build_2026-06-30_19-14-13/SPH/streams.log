@@ -1,0 +1,18 @@
+[4.493s] Invoking command in '/home/azivinicius/ros2_ws/src/SPH/build/SPH': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/azivinicius/ros2_ws/src/SPH/build/SPH/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/azivinicius/ros2_ws/src/SPH/build/SPH/build --no-deps symlink_data
+[6.395s] running develop
+[7.713s] running egg_info
+[7.853s] writing SPH.egg-info/PKG-INFO
+[7.854s] writing dependency_links to SPH.egg-info/dependency_links.txt
+[7.855s] writing entry points to SPH.egg-info/entry_points.txt
+[7.856s] writing requirements to SPH.egg-info/requires.txt
+[7.857s] writing top-level names to SPH.egg-info/top_level.txt
+[8.129s] reading manifest file 'SPH.egg-info/SOURCES.txt'
+[8.133s] writing manifest file 'SPH.egg-info/SOURCES.txt'
+[8.271s] running build_ext
+[8.272s] Creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH.egg-link (link to .)
+[8.274s] Installing diff_sph script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+[8.275s] Installing occupancy_grid script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+[8.276s] 
+[8.276s] Installed /home/azivinicius/ros2_ws/src/SPH/build/SPH
+[8.277s] running symlink_data
+[8.419s] Invoked command in '/home/azivinicius/ros2_ws/src/SPH/build/SPH' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/azivinicius/ros2_ws/src/SPH/build/SPH/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/azivinicius/ros2_ws/src/SPH/build/SPH/build --no-deps symlink_data

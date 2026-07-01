@@ -1,0 +1,10 @@
+[0.000000] (-) TimerEvent: {}
+[0.000454] (SPH) JobQueued: {'identifier': 'SPH', 'dependencies': OrderedDict()}
+[0.001173] (SPH) JobStarted: {'identifier': 'SPH'}
+[0.097259] (-) TimerEvent: {}
+[0.197910] (-) TimerEvent: {}
+[0.298560] (-) TimerEvent: {}
+[0.399253] (-) TimerEvent: {}
+[0.499970] (-) TimerEvent: {}
+[0.505897] (SPH) JobEnded: {'identifier': 'SPH', 'rc': 0}
+[0.517287] (-) EventReactorShutdown: {}

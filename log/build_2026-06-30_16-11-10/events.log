@@ -1,0 +1,132 @@
+[0.000000] (-) TimerEvent: {}
+[0.004885] (SPH) JobQueued: {'identifier': 'SPH', 'dependencies': OrderedDict()}
+[0.005218] (SPH) JobStarted: {'identifier': 'SPH'}
+[0.099658] (-) TimerEvent: {}
+[0.200538] (-) TimerEvent: {}
+[0.301555] (-) TimerEvent: {}
+[0.404769] (-) TimerEvent: {}
+[0.515234] (-) TimerEvent: {}
+[0.616136] (-) TimerEvent: {}
+[0.719681] (-) TimerEvent: {}
+[0.822804] (-) TimerEvent: {}
+[0.924530] (-) TimerEvent: {}
+[1.026558] (-) TimerEvent: {}
+[1.129328] (-) TimerEvent: {}
+[1.230318] (-) TimerEvent: {}
+[1.332673] (-) TimerEvent: {}
+[1.439564] (-) TimerEvent: {}
+[1.540586] (-) TimerEvent: {}
+[1.641198] (-) TimerEvent: {}
+[1.741957] (-) TimerEvent: {}
+[1.843515] (-) TimerEvent: {}
+[1.944152] (-) TimerEvent: {}
+[2.046578] (-) TimerEvent: {}
+[2.148513] (-) TimerEvent: {}
+[2.249252] (-) TimerEvent: {}
+[2.349979] (-) TimerEvent: {}
+[2.450592] (-) TimerEvent: {}
+[2.551219] (-) TimerEvent: {}
+[2.654577] (-) TimerEvent: {}
+[2.755384] (-) TimerEvent: {}
+[2.859278] (-) TimerEvent: {}
+[2.960045] (-) TimerEvent: {}
+[3.060940] (-) TimerEvent: {}
+[3.167050] (-) TimerEvent: {}
+[3.272748] (-) TimerEvent: {}
+[3.374583] (-) TimerEvent: {}
+[3.475334] (-) TimerEvent: {}
+[3.578989] (-) TimerEvent: {}
+[3.679875] (-) TimerEvent: {}
+[3.780585] (-) TimerEvent: {}
+[3.881231] (-) TimerEvent: {}
+[3.981944] (-) TimerEvent: {}
+[4.082644] (-) TimerEvent: {}
+[4.183260] (-) TimerEvent: {}
+[4.283882] (-) TimerEvent: {}
+[4.384827] (-) TimerEvent: {}
+[4.487709] (-) TimerEvent: {}
+[4.592036] (-) TimerEvent: {}
+[4.693570] (-) TimerEvent: {}
+[4.794350] (-) TimerEvent: {}
+[4.895478] (-) TimerEvent: {}
+[4.996585] (-) TimerEvent: {}
+[5.099879] (-) TimerEvent: {}
+[5.200695] (-) TimerEvent: {}
+[5.303605] (-) TimerEvent: {}
+[5.404374] (-) TimerEvent: {}
+[5.505967] (-) TimerEvent: {}
+[5.606697] (-) TimerEvent: {}
+[5.707398] (-) TimerEvent: {}
+[5.808128] (-) TimerEvent: {}
+[5.908886] (-) TimerEvent: {}
+[6.009643] (-) TimerEvent: {}
+[6.110562] (-) TimerEvent: {}
+[6.214248] (-) TimerEvent: {}
+[6.315020] (-) TimerEvent: {}
+[6.416186] (-) TimerEvent: {}
+[6.516901] (-) TimerEvent: {}
+[6.617607] (-) TimerEvent: {}
+[6.718327] (-) TimerEvent: {}
+[6.819153] (-) TimerEvent: {}
+[6.826452] (SPH) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/azivinicius/ros2_ws/src/SPH/build/SPH/build', '--no-deps', 'symlink_data'], 'cwd': '/home/azivinicius/ros2_ws/src/SPH/build/SPH', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'azivinicius', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/azivinicius', 'OLDPWD': '/home/azivinicius', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2865', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/azivinicius/rob_mov_TP01/install:/home/azivinicius/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'azivinicius', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'azivinicius', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': ':/home/azivinicius/rob_mov_TP01/src/turtlebot3_simulations/turtlebot3_gazebo/models', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/azivinicius/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/azivinicius-Lenovo-IdeaPad-S145-15IWL:@/tmp/.ICE-unix/2821,unix/azivinicius-Lenovo-IdeaPad-S145-15IWL:/tmp/.ICE-unix/2821', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/639b6a50_2328_49ac_8348_a029afa73056', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.98', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/azivinicius/ros2_ws/install/my_swarm_pkg:/home/azivinicius/ros2_ws/install/SPH:/home/azivinicius/rob_mov_TP01/install/robo_controller:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/azivinicius/ros2_ws/src/SPH/build/SPH', 'TURTLEBOT3_MODEL': 'burger', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/azivinicius/ros2_ws/src/SPH/build/SPH/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages:/home/azivinicius/crazyflie-firmware/build:/home/azivinicius/ros2_ws/build/my_swarm_pkg:/home/azivinicius/ros2_ws/install/my_swarm_pkg/lib/python3.12/site-packages:/home/azivinicius/ros2_ws/build/SPH:/home/azivinicius/ros2_ws/install/SPH/lib/python3.12/site-packages:/home/azivinicius/rob_mov_TP01/install/robo_controller/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[6.919326] (-) TimerEvent: {}
+[7.020088] (-) TimerEvent: {}
+[7.120877] (-) TimerEvent: {}
+[7.221602] (-) TimerEvent: {}
+[7.322314] (-) TimerEvent: {}
+[7.422979] (-) TimerEvent: {}
+[7.523660] (-) TimerEvent: {}
+[7.624587] (-) TimerEvent: {}
+[7.728865] (-) TimerEvent: {}
+[7.830249] (-) TimerEvent: {}
+[7.931023] (-) TimerEvent: {}
+[8.031759] (-) TimerEvent: {}
+[8.132557] (-) TimerEvent: {}
+[8.233345] (-) TimerEvent: {}
+[8.334069] (-) TimerEvent: {}
+[8.435563] (-) TimerEvent: {}
+[8.536228] (-) TimerEvent: {}
+[8.636930] (-) TimerEvent: {}
+[8.737980] (-) TimerEvent: {}
+[8.839649] (-) TimerEvent: {}
+[8.940318] (-) TimerEvent: {}
+[9.041096] (-) TimerEvent: {}
+[9.145717] (-) TimerEvent: {}
+[9.146501] (SPH) StdoutLine: {'line': b'running develop\n'}
+[9.245914] (-) TimerEvent: {}
+[9.346591] (-) TimerEvent: {}
+[9.447305] (-) TimerEvent: {}
+[9.548000] (-) TimerEvent: {}
+[9.648661] (-) TimerEvent: {}
+[9.749345] (-) TimerEvent: {}
+[9.849924] (-) TimerEvent: {}
+[9.950814] (-) TimerEvent: {}
+[10.051534] (-) TimerEvent: {}
+[10.152199] (-) TimerEvent: {}
+[10.252850] (-) TimerEvent: {}
+[10.353490] (-) TimerEvent: {}
+[10.414331] (SPH) StdoutLine: {'line': b'running egg_info\n'}
+[10.453634] (-) TimerEvent: {}
+[10.532656] (SPH) StdoutLine: {'line': b'writing SPH.egg-info/PKG-INFO\n'}
+[10.533689] (SPH) StdoutLine: {'line': b'writing dependency_links to SPH.egg-info/dependency_links.txt\n'}
+[10.534351] (SPH) StdoutLine: {'line': b'writing entry points to SPH.egg-info/entry_points.txt\n'}
+[10.535090] (SPH) StdoutLine: {'line': b'writing requirements to SPH.egg-info/requires.txt\n'}
+[10.535744] (SPH) StdoutLine: {'line': b'writing top-level names to SPH.egg-info/top_level.txt\n'}
+[10.553817] (-) TimerEvent: {}
+[10.654373] (-) TimerEvent: {}
+[10.754999] (-) TimerEvent: {}
+[10.780645] (SPH) StdoutLine: {'line': b"reading manifest file 'SPH.egg-info/SOURCES.txt'\n"}
+[10.785511] (SPH) StdoutLine: {'line': b"writing manifest file 'SPH.egg-info/SOURCES.txt'\n"}
+[10.855147] (-) TimerEvent: {}
+[10.903385] (SPH) StdoutLine: {'line': b'running build_ext\n'}
+[10.904115] (SPH) StdoutLine: {'line': b'Creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH.egg-link (link to .)\n'}
+[10.906521] (SPH) StdoutLine: {'line': b'Installing diff_sph script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH\n'}
+[10.907349] (SPH) StdoutLine: {'line': b'Installing occupancy_grid script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH\n'}
+[10.908359] (SPH) StdoutLine: {'line': b'\n'}
+[10.909121] (SPH) StdoutLine: {'line': b'Installed /home/azivinicius/ros2_ws/src/SPH/build/SPH\n'}
+[10.909759] (SPH) StdoutLine: {'line': b'running symlink_data\n'}
+[10.955350] (-) TimerEvent: {}
+[11.024504] (SPH) CommandEnded: {'returncode': 0}
+[11.055836] (-) TimerEvent: {}
+[11.090166] (SPH) JobEnded: {'identifier': 'SPH', 'rc': 0}
+[11.093778] (-) EventReactorShutdown: {}
