@@ -2,6 +2,7 @@ package.xml
 setup.cfg
 setup.py
 SPH/__init__.py
+SPH/basic_potential.py
 SPH/diff_sph.py
 SPH/occupancy_grid.py
 SPH/particle.py
@@ -14,6 +15,7 @@ SPH.egg-info/entry_points.txt
 SPH.egg-info/requires.txt
 SPH.egg-info/top_level.txt
 SPH.egg-info/zip-safe
+launch/basic.launch.py
 launch/diff.launch.py
 maps/map_arena.pgm
 maps/map_arena.yaml

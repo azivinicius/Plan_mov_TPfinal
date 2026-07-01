@@ -1,3 +1,4 @@
 [console_scripts]
+basic = SPH.basic_potential:main
 diff_sph = SPH.diff_sph:main
 occupancy_grid = SPH.occupancy_grid:main

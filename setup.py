@@ -13,7 +13,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         
         # 1. Include all launch files
-        (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
         
         # 2. Include all world files (.world and .sdf)
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
