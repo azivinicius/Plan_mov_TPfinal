@@ -58,13 +58,23 @@ cenario_escolhido}]))
     xacro_file = os.path.join(pkg_share, 'urdf', 'robot.urdf.xacro') 
     robot_desc_xml = xacro.process_file(xacro_file).toxml() 
 
-    # Criação dos Robôs (Padronizado para robot_{i}) 
+    # Criação dos Robôs (Padronizado para robot_{i})
+    spawn_params = [] 
     for i in range(num_robots): 
         ns = f'robot_{i}' 
         gz_model_name = ns  # Nome do modelo no Gazebo igual ao namespace 
 
-        spawn_x = str(base_x + (i % 3) * 0.4) 
-        spawn_y = str(base_y + (i // 3) * 0.4) 
+        spawn_x = str(base_x + (i % 3) * 0.6) 
+        spawn_y = str(base_y + (i // 3) * 0.6)
+        spawn_params.append(('spawn_x_{}'.format(i), spawn_x))
+        spawn_params.append(('spawn_y_{}'.format(i), spawn_y))
+
+        xacro_file = os.path.join(pkg_share, 'urdf', 'robot.urdf.xacro') 
+        # Passa o argumento robot_name para o xacro em tempo de execução
+        robot_desc_xml = xacro.process_file(
+            xacro_file, 
+            mappings={'robot_name': ns}
+        ).toxml() 
 
         # RSP 
         nodes_list.append(Node( 
@@ -80,7 +90,7 @@ cenario_escolhido}]))
             executable='create', 
 
             arguments=['-topic', f'/{ns}/robot_description', '-name', 
-gz_model_name, '-x', spawn_x, '-y', spawn_y, '-z', '0.2'] 
+gz_model_name, '-x', spawn_x, '-y', spawn_y, '-z', '0.2','-allow_renaming', 'false'] 
         )) 
 
         # 4. PONTE DE COMUNICAÇÃO ISOLADA E ESPECÍFICA 
@@ -89,23 +99,27 @@ gz_model_name, '-x', spawn_x, '-y', spawn_y, '-z', '0.2']
             package='ros_gz_bridge', 
             executable='parameter_bridge', 
             arguments=[ 
-                '/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist', 
-                '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry', 
+                # We put the namespace directly into the Gazebo topic definition
+                f'/{ns}/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist', 
+                f'/{ns}/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry', 
                 '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock' 
             ], 
-            remappings=[ 
-                ('/cmd_vel', f'/{ns}/cmd_vel'), 
-                ('/odom', f'/{ns}/odom'), 
-            ], 
-            output='screen', 
-            namespace=ns # A mágica acontece aqui: ela joga o remapeamento DENTRO do namespace 
+            output='screen'
+            # REMOVE remappings and namespace=ns from here!
         ) 
         nodes_list.append(bridge) 
           
-
+# No launch, dentro da lista de parâmetros do nó Diff_SPH
+    parameters=[{
+        'use_sim_time': True,
+        'num_robots': num_robots,
+        'goal_x': goal_x,
+        'goal_y': goal_y,
+        **{f'spawn_x_{i}': float(base_x + (i % 3) * 0.6) for i in range(num_robots)},
+        **{f'spawn_y_{i}': float(base_y + (i // 3) * 0.6) for i in range(num_robots)}
+    }]
     nodes_list.append(Node(package=package_name, executable=modo, 
-output='screen', parameters=[{'use_sim_time': True, 'num_robots': 
-    num_robots,'goal_x': goal_x,'goal_y': goal_y}])) 
+output='screen', parameters=parameters)) 
     return nodes_list 
 
 

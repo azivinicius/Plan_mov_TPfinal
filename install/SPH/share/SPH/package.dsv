@@ -2,5 +2,3 @@ source;share/SPH/hook/pythonpath.dsv
 source;share/SPH/hook/pythonpath.sh
 source;share/SPH/hook/ament_prefix_path.dsv
 source;share/SPH/hook/ament_prefix_path.sh
-source;../../build/SPH/share/SPH/hook/pythonpath_develop.dsv
-source;../../build/SPH/share/SPH/hook/pythonpath_develop.sh

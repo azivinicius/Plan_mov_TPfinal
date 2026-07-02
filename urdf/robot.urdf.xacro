@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="diff_robot">
-  
+<xacro:arg name="robot_name" default="robot_0"/>
+<xacro:property name="ns" value="$(arg robot_name)"/>
+
   <link name="base_link">
     <visual>
       <geometry><cylinder radius="0.071" length="0.05"/></geometry>
@@ -48,10 +50,14 @@
       <wheel_separation>0.16</wheel_separation>
       <wheel_radius>0.033</wheel_radius>
       <odom_publish_frequency>50</odom_publish_frequency>
-      <topic>cmd_vel</topic>
-      <odom_topic>odom</odom_topic>
-      <frame_id>odom</frame_id>
-      <child_frame_id>base_link</child_frame_id>
+      
+      <!-- 2. FORCE O TOPICO A USAR O NAMESPACE DO ROBÔ -->
+      <topic>/${ns}/cmd_vel</topic>
+      <odom_topic>/${ns}/odom</odom_topic>
+      
+      <!-- 3. AJUSTE OS FRAMES PARA REBATER O NAMESPACE (Evita TF duplicado) -->
+      <frame_id>${ns}/odom</frame_id>
+      <child_frame_id>${ns}/base_link</child_frame_id>
     </plugin>
   </gazebo>
 </robot>

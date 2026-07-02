@@ -39,6 +39,7 @@ setup(
             'occupancy_grid = SPH.occupancy_grid:main',
             'diff_sph = SPH.diff_sph:main',
             'basic = SPH.basic_potential:main',
+            'decentralized = SPH.decentralized:main',
         ],
     },
 )
