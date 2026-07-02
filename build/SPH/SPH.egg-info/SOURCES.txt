@@ -29,9 +29,4 @@ maps/map_mazeold.pgm
 maps/map_mazeold.yaml
 resource/SPH
 urdf/robot.urdf.xacro
-worlds/tp2_arena.world
-worlds/tp2_arena01.world
-worlds/tp2_arena02.world
-worlds/tp2_arena03.world
-worlds/tp2_complex.world
-worlds/tp2_maze.world
+worlds/tpf_arena.world

@@ -12,33 +12,42 @@ def launch_setup(context, *args, **kwargs):
     pkg_share = get_package_share_directory(package_name) 
 
     modo = LaunchConfiguration('modo').perform(context) 
-    mundo_sugerido = LaunchConfiguration('mundo').perform(context) 
+    mundo_sugerido = LaunchConfiguration('mundo').perform(context)
+    print(f"mundo_sugerido = '{mundo_sugerido}'")
     num_robots = int(LaunchConfiguration('num_robots').perform(context)) 
 
     # Lógica de mundo 
     if 'maze' in mundo_sugerido: 
-        mundo, cenario_escolhido, base_x, base_y = 'tp2_arena01.world', 'maze', -4.0, -4.0 
-    elif 'complex' in mundo_sugerido: 
-        mundo, cenario_escolhido, base_x, base_y = 'tp2_complex.world', 'complex', -1.0, -1.0 
+        mundo, cenario_escolhido, base_x, base_y = 'tpf_arena.world', 'maze', -4.0, -4.0 
+        goal_x, goal_y = 4.3, 4.3      
+    elif 'simple' in mundo_sugerido: 
+        mundo, cenario_escolhido, base_x, base_y = 'tpf_simple.world', 'simple', -4.0, -4.0
+        goal_x, goal_y = 4.3, 4.3
     elif 'arena' in mundo_sugerido: 
-        mundo, cenario_escolhido, base_x, base_y = 'tp2_arena02.world', 'arena', -3.2, -4.2 
-    elif 'empty' in mundo_sugerido: 
-        mundo, cenario_escolhido, base_x, base_y = 'empty.sdf', 'empty', 0.0, 0.0 
+        mundo, cenario_escolhido, base_x, base_y = 'tpf_arena02.world', 'arena', -3.2, -4.2 
+        goal_x, goal_y = 4.3, 4.3
+    elif 'empty' in mundo_sugerido:
+        mundo, cenario_escolhido, base_x, base_y = 'empty.sdf', 'empty', 0.0, 0.0
+        goal_x, goal_y = 4.3, 4.3
     else: 
-        mundo, cenario_escolhido, base_x, base_y = 'tp2_complex.world', 'complex', -1.8, -1.8 
+        mundo, cenario_escolhido, base_x, base_y = 'tp2_simple.world', 'simple', -4.0, -4.0 
+        goal_x, goal_y = 4.3, 4.3
 
     # Gazebo 
-    world_path = 'empty.sdf' if cenario_escolhido == 'empty' else os.path.join(pkg_share, 'worlds', mundo) 
+    world_path = 'empty.sdf' if cenario_escolhido == 'empty' else os.path.join(pkg_share, 'worlds', mundo)
+
+    
     gazebo = IncludeLaunchDescription( 
 
-         
+        
 PythonLaunchDescriptionSource([os.path.join(get_package_share_directory('ros_gz_sim'),
  'launch', 'gz_sim.launch.py')]), 
         launch_arguments={'gz_args': f'-r -v 4 {world_path}'}.items() 
     ) 
 
-    nodes_list = [gazebo] 
-
+    nodes_list = []                     # lista vazia
+    nodes_list.append(gazebo)          
+    
     if cenario_escolhido != 'empty': 
 
         nodes_list.append(Node(package=package_name, 
@@ -96,7 +105,7 @@ gz_model_name, '-x', spawn_x, '-y', spawn_y, '-z', '0.2']
 
     nodes_list.append(Node(package=package_name, executable=modo, 
 output='screen', parameters=[{'use_sim_time': True, 'num_robots': 
-num_robots}])) 
+    num_robots,'goal_x': goal_x,'goal_y': goal_y}])) 
     return nodes_list 
 
 

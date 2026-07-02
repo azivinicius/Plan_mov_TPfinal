@@ -47,6 +47,12 @@ class Diff_SPH(Node):
         self.robot_x = [0.0] * self.num_robots 
         self.robot_y = [0.0] * self.num_robots 
         self.robot_theta = [0.0] * self.num_robots 
+
+        self.declare_parameter('goal_x', 0.0)   # valor padrão se não vier do launch
+        self.declare_parameter('goal_y', 0.0)
+        self.goal_x = self.get_parameter('goal_x').value
+        self.goal_y = self.get_parameter('goal_y').value
+        self.get_logger().info(f'Goal definido via launch: ({self.goal_x:.2f}, {self.goal_y:.2f})')
           
         # Moving average buffers 
         self.buffer_size_v = 5 
@@ -75,8 +81,7 @@ class Diff_SPH(Node):
                     self.particles.append(p) 
                     idx += 1 
                       
-        # Initialize target potential (Assuming a 2D target at x=4, y=4) 
-        self.pot = Potential(xc=4.0, yc=4.0) 
+        self.pot = Potential(xc=self.goal_x, yc=self.goal_y) 
 
         # --- 5. ROS 2 PUBLISHERS & SUBSCRIBERS --- 
         self.pubs = [] 

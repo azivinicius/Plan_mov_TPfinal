@@ -47,7 +47,13 @@ class Diff_SPH(Node):
         self.robot_x = [0.0] * self.num_robots 
         self.robot_y = [0.0] * self.num_robots 
         self.robot_theta = [0.0] * self.num_robots 
-          
+        
+        self.declare_parameter('goal_x', 0.0)   # valor padrão se não vier do launch
+        self.declare_parameter('goal_y', 0.0)
+        self.goal_x = self.get_parameter('goal_x').value
+        self.goal_y = self.get_parameter('goal_y').value
+        self.get_logger().info(f'Goal definido via launch: ({self.goal_x:.2f}, {self.goal_y:.2f})')
+
         # Moving average buffers 
         self.buffer_size_v = 5 
         self.buffer_size_w = 5 
@@ -76,8 +82,8 @@ class Diff_SPH(Node):
                     idx += 1 
                       
         # Initialize target potential (Assuming a 2D target at x=4, y=4) 
-        self.pot = Potential(xc=0.5, yc=0.05, R= 0.05) 
-
+        # self.pot = Potential(xc=0.5, yc=0.05, R= 0.05) 
+        self.pot = Potential(xc=self.goal_x, yc=self.goal_y, R=0.25)
         # --- 5. ROS 2 PUBLISHERS & SUBSCRIBERS --- 
         self.pubs = [] 
         self.subs = [] 
@@ -238,7 +244,17 @@ class Diff_SPH(Node):
 
         # --- Graph 1: XY Trajectories over the Map --- 
         plt.subplot(2, 2, 1) 
-
+        
+        if self.map_recebido and self.grid is not None:
+            map_img = np.zeros((self.grid_height, self.grid_width, 3), dtype=np.uint8)
+            map_img[self.grid == 0] = [255, 255, 255]   # livre -> branco
+            map_img[self.grid == 1] = [0, 0, 0]         # obstáculo -> preto
+            x_min = self.origin_x
+            x_max = self.origin_x + self.grid_width * self.resolution
+            y_min = self.origin_y
+            y_max = self.origin_y + self.grid_height * self.resolution
+            
+            plt.imshow(map_img, origin='lower', extent=[x_min, x_max, y_min, y_max], alpha=0.7)
         # --- Trajetórias dos robôs ---
         for i in range(self.num_robots):
             plt.plot(self.hist_x_rob[i], self.hist_y_rob[i], label=f'Robô {i}')

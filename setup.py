@@ -18,6 +18,7 @@ setup(
         # 2. Include all world files (.world and .sdf)
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*.sdf')),
+        (os.path.join('share', 'SPH', 'worlds', 'meshes'), glob('worlds/meshes/*.stl')),
         
         # 3. Include map files (.yaml and .pgm) used by your occupancy_grid node
         (os.path.join('share', package_name, 'maps'), glob('maps/*')),
