@@ -76,7 +76,7 @@ class Diff_SPH(Node):
                     idx += 1 
                       
         # Initialize target potential (Assuming a 2D target at x=4, y=4) 
-        self.pot = Potential(xc=4.0, yc=4.0, R= 2.0) 
+        self.pot = Potential(xc=0.5, yc=0.05, R= 0.05) 
 
         # --- 5. ROS 2 PUBLISHERS & SUBSCRIBERS --- 
         self.pubs = [] 
@@ -238,25 +238,26 @@ class Diff_SPH(Node):
 
         # --- Graph 1: XY Trajectories over the Map --- 
         plt.subplot(2, 2, 1) 
-        if self.map_recebido: 
-            map_img = np.zeros((self.grid_height, self.grid_width, 3), dtype=np.uint8) 
-            map_img[self.grid == 0] = [255, 255, 255] 
-            map_img[self.grid == 1] = [0, 0, 0] 
-            x_min = self.origin_x 
-            x_max = self.origin_x + self.grid_width * self.resolution 
-            y_min = self.origin_y 
-            y_max = self.origin_y + self.grid_height * self.resolution 
-            plt.imshow(map_img, origin='lower', extent=[x_min, x_max, y_min, y_max], alpha=0.7) 
 
-        for i in range(self.num_robots): 
-            plt.plot(self.hist_x_rob[i], self.hist_y_rob[i], label=f'Robô {i}') 
-          
-        plt.scatter(self.pot.xc, self.pot.yc, color='red', marker='X', s=150, label='Potencial Objetivo') 
-        plt.title('Trajetória no Plano XY') 
-        plt.xlabel('X (metros)') 
-        plt.ylabel('Y (metros)') 
-        plt.grid(True) 
-        plt.axis('equal') 
+        # --- Trajetórias dos robôs ---
+        for i in range(self.num_robots):
+            plt.plot(self.hist_x_rob[i], self.hist_y_rob[i], label=f'Robô {i}')
+
+        # --- Ponto objetivo ---
+        plt.scatter(self.pot.xc, self.pot.yc, color='red', marker='X', s=150, label='Potencial Objetivo')
+
+        # --- Círculo ao redor do ponto ---
+        circle = plt.Circle((self.pot.xc, self.pot.yc), self.pot.R,
+                            color='red', fill=False, linestyle='--', linewidth=2,
+                            label='Raio Potencial', clip_on=False)  # não corta nas bordas
+        plt.gca().add_patch(circle)
+
+        # --- Configurações finais ---
+        plt.title('Trajetória no Plano XY')
+        plt.xlabel('X (metros)')
+        plt.ylabel('Y (metros)')
+        plt.grid(True)
+        plt.axis('equal')          
 
         # --- Graph 2: SPH Density (Rho) --- 
         plt.subplot(2, 2, 2) 

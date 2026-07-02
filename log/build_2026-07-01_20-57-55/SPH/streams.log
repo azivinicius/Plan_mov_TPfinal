@@ -1,0 +1,19 @@
+[4.359s] Invoking command in '/home/azivinicius/ros2_ws/src/SPH/build/SPH': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/azivinicius/ros2_ws/src/SPH/build/SPH/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/azivinicius/ros2_ws/src/SPH/build/SPH/build --no-deps symlink_data
+[6.270s] running develop
+[7.600s] running egg_info
+[7.734s] writing SPH.egg-info/PKG-INFO
+[7.735s] writing dependency_links to SPH.egg-info/dependency_links.txt
+[7.736s] writing entry points to SPH.egg-info/entry_points.txt
+[7.736s] writing requirements to SPH.egg-info/requires.txt
+[7.737s] writing top-level names to SPH.egg-info/top_level.txt
+[8.028s] reading manifest file 'SPH.egg-info/SOURCES.txt'
+[8.032s] writing manifest file 'SPH.egg-info/SOURCES.txt'
+[8.177s] running build_ext
+[8.178s] Creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH.egg-link (link to .)
+[8.182s] Installing basic script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+[8.183s] Installing diff_sph script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+[8.184s] Installing occupancy_grid script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+[8.185s] 
+[8.186s] Installed /home/azivinicius/ros2_ws/src/SPH/build/SPH
+[8.186s] running symlink_data
+[8.313s] Invoked command in '/home/azivinicius/ros2_ws/src/SPH/build/SPH' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/azivinicius/ros2_ws/src/SPH/build/SPH/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/azivinicius/ros2_ws/src/SPH/build/SPH/build --no-deps symlink_data
