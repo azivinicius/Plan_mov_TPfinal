@@ -207,24 +207,28 @@ class Diff_SPH(Node):
             
         # Atualização da física SPH 
         particulas_dinamicas = [p for p in self.particles if not getattr(p, 'fixed', False)] 
-        #particulas_dinamicas = self.particles
         resultados = []
         for p in particulas_dinamicas:
-            # Nota: certifique-se que suas funções retornem APENAS o valor, 
-            # sem atribuir a self.rho, self.P, etc.
             n_rho = p.next_rho(self.particles)
             n_P = p.next_pressure()
             dvdt = p.next_vel(self.particles)
             e = p.next_energy(self.particles)
+            
+            # --- TRAVA DE ACELERAÇÃO ---
+            # Impede que picos de 600 milhões de pressão gerem acelerações infinitas.
+            # Se a aceleração tentar passar de 5.0 m/s², nós seguramos ela.
+            dvdt[0] = float(np.clip(dvdt[0], -5.0, 5.0))
+            dvdt[1] = float(np.clip(dvdt[1], -5.0, 5.0))
+            
             resultados.append((n_rho, n_P, dvdt, e))
         
         for p, (n_rho, n_P, dvdt, e) in zip(particulas_dinamicas, resultados):
-                p.update_particle(n_rho, n_P, dvdt, e, self.dt)
+            p.update_particle(n_rho, n_P, dvdt, e, self.dt)
                 
                 # --- TRAVA DE SEGURANÇA ANTISPLOSÃO ---
                 # Impede que a partícula seja ejetada para o infinito em cantos fechados
-                p.vel[0] = float(np.clip(p.vel[0], -1.5, 1.5))
-                p.vel[1] = float(np.clip(p.vel[1], -1.5, 1.5))
+            p.vel[0] = float(np.clip(p.vel[0], -1.5, 1.5))
+            p.vel[1] = float(np.clip(p.vel[1], -1.5, 1.5))
 
         # 2. COMPUTE AND PUBLISH ROBOT COMMANDS (Controle por aceleração/força) 
         for i in range(self.num_robots): 
