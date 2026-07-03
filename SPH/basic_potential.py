@@ -9,6 +9,7 @@ import rclpy
 from rclpy.node import Node 
 from geometry_msgs.msg import Twist, PoseStamped 
 from nav_msgs.msg import Odometry, Path
+import matplotlib.pyplot as plt 
 
 from SPH.particle import Particle 
 from SPH.potential import Potential 
@@ -263,15 +264,10 @@ class Diff_SPH(Node):
 
 
     def plot_results(self): 
-        """Generates and displays historical performance charts for all drones.""" 
+        """Generates, saves and displays historical performance charts for all drones.""" 
         if not self.hist_tempo: 
             self.get_logger().warn("No historical data collected to plot.") 
             return 
-
-        import numpy as np 
-        import matplotlib 
-        matplotlib.use('TkAgg')  
-        import matplotlib.pyplot as plt 
 
         # Normalize time array 
         t = np.array(self.hist_tempo) - self.hist_tempo[0] 
@@ -337,8 +333,14 @@ class Diff_SPH(Node):
         plt.axis('equal')
 
         plt.tight_layout() 
+
+        # Cria a pasta e salva a imagem substituindo a anterior
+        os.makedirs('plots', exist_ok=True)
+        plt.savefig('plots/sph.png', dpi=300, bbox_inches='tight')
+        self.get_logger().info("Gráfico salvo com sucesso em 'plots/sph.png'")
+
         self.get_logger().info("Exibindo gráficos de desempenho... Feche a janela para finalizar.") 
-        plt.show(block=True) 
+        plt.show(block=True)
 
 def main(args=None): 
     rclpy.init(args=args) 

@@ -1,0 +1,14 @@
+# Ignorar pastas de compilação do ROS 2 (CRÍTICO)
+build/
+install/
+log/
+
+# Ignorar caches do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar arquivos de editores de texto/IDE
+.vscode/
+.idea/
