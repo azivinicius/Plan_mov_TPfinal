@@ -27,14 +27,17 @@ class Potential:
     #def force(self, x, y, beta=3, k = 50):
         g = self.grad_phi(x, y)
         norm_g = math.sqrt(g[0]**2 + g[1]**2)
-        #norm_g = 1
+        
         if norm_g < 1e-9:
             return np.zeros(2)
-        f = -k*g / (norm_g ** beta)
-        # Safe magnitude saturation (keeps direction unchanged)
-        # norm_f = math.sqrt(f[0]**2 + f[1]**2)
-        # if norm_f > max_force:
-        #     f = f * (max_force / norm_f)
+            
+        f = -k * g / (norm_g ** beta)
+        
+        # Correção segura: Satura os componentes X e Y entre -1.0 e 1.0 
+        # usando a função nativa do NumPy, o que evita o erro do 'if' com arrays.
+        f = np.clip(f, -1.0, 1.0)
+
+        return f
 
 
         return f

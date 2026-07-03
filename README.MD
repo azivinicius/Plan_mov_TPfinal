@@ -24,3 +24,6 @@ SIMULAÇÃO DE ENXAME SPH - INSTRUÇÕES DE EXECUÇÃO
 
    Executar um único robô na arena:
        ros2 launch SPH sph.launch.py mundo:=arena num_robots:=1
+
+
+killall -9 gz ruby ros2 python3;cd ~/Plan_mov_TPfinal;colcon build --packages-select SPH;source install/setup.bash;ros2 launch SPH diff.launch.py mundo:=simple num_robots:=3
