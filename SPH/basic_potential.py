@@ -205,7 +205,7 @@ class Diff_SPH(Node):
             # self.particles[i].y = self.robot_y[i] 
             self.particles[i].ext_force = self.pot.force(self.particles[i].x, self.particles[i].y) 
             # TESTE PARA COMPORTAMENTO SEM FORÇA
-            self.particles[i].ext_force = [0.0, 0.0] 
+            #self.particles[i].ext_force = [0.0, 0.0] 
             
         # Atualização da física SPH 
         particulas_dinamicas = [p for p in self.particles if not getattr(p, 'fixed', False)] 
