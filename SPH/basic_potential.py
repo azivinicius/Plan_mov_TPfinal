@@ -196,9 +196,6 @@ class Diff_SPH(Node):
             return
         if not all(self.odom_recebida):
             return
-        # Registro de tempo  
-        tempo_atual = self.get_clock().now().nanoseconds / 1e9 
-        self.hist_tempo.append(tempo_atual) 
 
         # 1. ADVANCE SPH (Livre, sem forçar robô) 
         for i in range(self.num_robots): 
@@ -223,6 +220,11 @@ class Diff_SPH(Node):
         
         for p, (n_rho, n_P, dvdt, e) in zip(particulas_dinamicas, resultados):
                 p.update_particle(n_rho, n_P, dvdt, e, self.dt)
+                
+                # --- TRAVA DE SEGURANÇA ANTISPLOSÃO ---
+                # Impede que a partícula seja ejetada para o infinito em cantos fechados
+                p.vel[0] = float(np.clip(p.vel[0], -1.5, 1.5))
+                p.vel[1] = float(np.clip(p.vel[1], -1.5, 1.5))
 
         # 2. COMPUTE AND PUBLISH ROBOT COMMANDS (Controle por aceleração/força) 
         for i in range(self.num_robots): 
@@ -261,6 +263,10 @@ class Diff_SPH(Node):
             twist.linear.x = float(np.clip(v_ref, -0.5, 0.5))
             twist.angular.z = float(np.clip(w_ref, -1.0, 1.0))
             self.pubs[i].publish(twist)
+
+        # Registro de tempo (Movido para o final para garantir que o plot não quebre se o usuário der Ctrl+C no meio da volta)
+        tempo_atual = self.get_clock().now().nanoseconds / 1e9 
+        self.hist_tempo.append(tempo_atual)
 
 
     def plot_results(self): 
