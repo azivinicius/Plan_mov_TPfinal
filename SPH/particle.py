@@ -68,14 +68,14 @@ class Particle:
         self.x = x
         self.y = y
 
-        self.h = 1
+        self.h = 10
 
         self.m = m
         self.rho = 1000.0
         self.ext_force = [0.0, 0.0]
         
         self.e = 1.0
-        self.B = (200 * self.rho * 9.8 * (1/98)) / 1
+        self.B = 3*(200 * self.rho * 9.8 * (1/98)) / 1
         self.P = self.B*((self.rho/1000)**1 -1)
 
         self.c =  math.sqrt(1*(self.P+self.B)/self.rho)
@@ -108,7 +108,7 @@ class Particle:
             self.P = 0.0
             self.c = 0.0
             return 0.0
-        self.B =  (200 * self.rho * 9.8 * (1/98)) / 1 
+        self.B =  3*(200 * self.rho * 9.8 * (1/98)) / 1 
         P = self.B * ((self.rho / 1000.0) - 1.0)   
         self.c = math.sqrt((P + self.B) / self.rho)  
         # self.P = P

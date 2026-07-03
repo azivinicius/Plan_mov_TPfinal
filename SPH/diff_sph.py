@@ -89,13 +89,12 @@ class Diff_SPH(Node):
             self.spawn_y.append(y)
             
             # Cria a partícula com a posição de spawn
-            p = Particle(id=str(i), x=x, y=y, m=1000.0)
+            p = Particle(id=str(i), x=x, y=y, m=1500.0)
             self.particles.append(p)
             
             self.get_logger().info(f"Partícula {i} criada em ({x:.3f}, {y:.3f})")
 
-        # Initialize target potential (Assuming a 2D target at x=4, y=4) 
-        # self.pot = Potential(xc=0.5, yc=0.05, R= 0.05) 
+
         self.pot = Potential(xc=self.goal_x, yc=self.goal_y)
         # --- 5. ROS 2 PUBLISHERS & SUBSCRIBERS --- 
         self.pubs = [] 
