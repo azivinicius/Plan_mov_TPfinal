@@ -66,11 +66,12 @@ class Particle:
         self.x = x
         self.y = y
 
-        # VALORES CORRIGIDOS E BALANCEADOS
         self.h = 0.674            # Raio de influência
-        self.m = m
+        #W_zero = 10 / (7 * math.pi * self.h**2) #tentativa para estabilizar densidade em 1000 com h variavel
+        W_zero  = 1
+        self.m = 1000.0 / W_zero #Garante densidade 1000
         self.rho = self.rho_0 = 1000.0   # Densidade de referência
-        self.B = 5000.0        # Rigidez fixa
+        self.B = 1000.0        # Rigidez fixa
         
         self.ext_force = [0.0, 0.0]
         self.vel = [0.0,  0.0]
@@ -125,7 +126,7 @@ class Particle:
             dvdt[0] += q.m*P_term*dWdx
             dvdt[1] += q.m*P_term*dWdy
     
-        zetta = 5
+        zetta = 1
         
         dvdt[0] = -dvdt[0] - zetta*self.vel[0] + self.ext_force[0]
         dvdt[1] = -dvdt[1] - zetta*self.vel[1] + self.ext_force[1]
