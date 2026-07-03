@@ -28,7 +28,7 @@ def launch_setup(context, *args, **kwargs):
         goal_x, goal_y = 4.3, 4.3
     elif 'empty' in mundo_sugerido:
         mundo, cenario_escolhido, base_x, base_y = 'empty.sdf', 'empty', 0.0, 0.0
-        goal_x, goal_y = 4.3, 4.3
+        goal_x, goal_y = 7.0, 7.0
     else: 
         mundo, cenario_escolhido, base_x, base_y = 'tp2_simple.world', 'simple', -4.0, -4.0 
         goal_x, goal_y = 4.3, 4.3
