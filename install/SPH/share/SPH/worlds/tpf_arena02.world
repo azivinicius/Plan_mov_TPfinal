@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.8">
-  <world name="tp2_complex">
+  <world name="tp_arena02_world">
     <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"></plugin>
     <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"></plugin>
     <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"></plugin>
@@ -19,7 +19,6 @@
       <direction>-0.5 0.1 -0.9</direction>
     </light>
 
-    <!-- Keeps the floor grid so your map has something to sit on -->
     <model name="ground_plane">
       <static>true</static>
       <link name="link">
@@ -37,17 +36,12 @@
       </link>
     </model>
 
-    <!-- Marcador visual do Goal -->
     <model name="goal_marker">
       <static>true</static>
       <pose>9.0 9.0 0.1 0 0 0</pose>
       <link name="link">
         <visual name="visual">
-          <geometry>
-            <sphere>
-              <radius>0.15</radius>
-            </sphere>
-          </geometry>
+          <geometry><sphere><radius>0.15</radius></sphere></geometry>
           <material>
             <ambient>1.0 0.0 0.0 1.0</ambient>
             <diffuse>1.0 0.0 0.0 1.0</diffuse>
@@ -57,31 +51,44 @@
       </link>
     </model>
 
-    <!-- YOUR NEW MAP IS NOW THE ONLY ENVIRONMENT -->
-    <model name="stl_map">
+    <model name="arena_map">
       <static>true</static>
-      <pose>0 0 0 0 0 0</pose>
-      <link name="map_link">
-        <collision name="collision">
-          <geometry>
-            <mesh>
-              <uri>meshes/map_arena.stl</uri>
-            </mesh>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <mesh>
-              <uri>meshes/map_arena.stl</uri>
-            </mesh>
-          </geometry>
-          <material>
-            <ambient>0.2 0.5 0.7 1</ambient>
-            <diffuse>0.2 0.5 0.7 1</diffuse>
-          </material>
+      
+      <link name="wall_south">
+        <pose>5 -1 0.5 0 0 0</pose>
+        <collision name="col"><geometry><box><size>12.2 0.2 1</size></box></geometry></collision>
+        <visual name="vis">
+          <geometry><box><size>12.2 0.2 1</size></box></geometry>
+          <material><ambient>0.2 0.5 0.7 1</ambient><diffuse>0.2 0.5 0.7 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="wall_north">
+        <pose>5 11 0.5 0 0 0</pose>
+        <collision name="col"><geometry><box><size>12.2 0.2 1</size></box></geometry></collision>
+        <visual name="vis">
+          <geometry><box><size>12.2 0.2 1</size></box></geometry>
+          <material><ambient>0.2 0.5 0.7 1</ambient><diffuse>0.2 0.5 0.7 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="wall_west">
+        <pose>-1 5 0.5 0 0 0</pose>
+        <collision name="col"><geometry><box><size>0.2 12 1</size></box></geometry></collision>
+        <visual name="vis">
+          <geometry><box><size>0.2 12 1</size></box></geometry>
+          <material><ambient>0.2 0.5 0.7 1</ambient><diffuse>0.2 0.5 0.7 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="wall_east">
+        <pose>11 5 0.5 0 0 0</pose>
+        <collision name="col"><geometry><box><size>0.2 12 1</size></box></geometry></collision>
+        <visual name="vis">
+          <geometry><box><size>0.2 12 1</size></box></geometry>
+          <material><ambient>0.2 0.5 0.7 1</ambient><diffuse>0.2 0.5 0.7 1</diffuse></material>
         </visual>
       </link>
     </model>
-
   </world>
 </sdf>

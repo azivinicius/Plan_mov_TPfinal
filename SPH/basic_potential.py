@@ -8,11 +8,50 @@ from collections import deque
 import rclpy 
 from rclpy.node import Node 
 from geometry_msgs.msg import Twist, PoseStamped 
-from nav_msgs.msg import Odometry, Path, OccupancyGrid 
+from nav_msgs.msg import Odometry, Path
 
-# Import your custom modules 
 from SPH.particle import Particle 
 from SPH.potential import Potential 
+
+# =====================================================================
+# FUNÇÕES AUXILIARES DE MAPEAMENTO (0 A 10 METROS)
+# =====================================================================
+ORIGIN = -1.0
+GRID_SIZE = 120   
+RESOLUTION = 0.1  
+
+def world_to_grid(x, y):
+    col = int(round((x - ORIGIN) / RESOLUTION))
+    row = int(round((y - ORIGIN) / RESOLUTION))
+    return row, col
+
+def draw_wall(grid, x, y, width_x, width_y):
+    row_center, col_center = world_to_grid(x, y)
+    w_cells = int(round((width_x / RESOLUTION) / 2))
+    h_cells = int(round((width_y / RESOLUTION) / 2))
+    
+    r_min = max(0, row_center - h_cells)
+    r_max = min(grid.shape[0], row_center + h_cells)
+    c_min = max(0, col_center - w_cells)
+    c_max = min(grid.shape[1], col_center + w_cells)
+    
+    grid[r_min:r_max, c_min:c_max] = 1
+
+def create_hardcoded_map(cenario):
+    grid = np.zeros((GRID_SIZE, GRID_SIZE), dtype=int) 
+    
+    draw_wall(grid, 5.0, -1.0, 12.2, 0.2) 
+    draw_wall(grid, 5.0, 11.0, 12.2, 0.2) 
+    draw_wall(grid, -1.0, 5.0, 0.2, 12.0) 
+    draw_wall(grid, 11.0, 5.0, 0.2, 12.0) 
+    
+    if cenario == 'maze':
+        draw_wall(grid, 4.0, 4.0, 2.0, 2.0) 
+        draw_wall(grid, 7.0, 6.0, 0.5, 4.0) 
+    elif cenario == 'simple':
+        draw_wall(grid, 4.5, 4.5, 0.5, 6.0) 
+
+    return grid
 
 class Diff_SPH(Node): 
     def __init__(self): 
@@ -28,13 +67,16 @@ class Diff_SPH(Node):
         self.dt = 0.02
           
         # --- 2. MAP INFRASTRUCTURE --- 
-        self.map_recebido = False 
-        self.resolution = None 
-        self.origin_x = None 
-        self.origin_y = None 
-        self.grid_width = 0 
-        self.grid_height = 0 
-        self.grid = None 
+        self.declare_parameter('scenario', 'simple')
+        self.cenario = self.get_parameter('scenario').value
+
+        self.grid = create_hardcoded_map(self.cenario)
+
+        self.origin_x = ORIGIN
+        self.origin_y = ORIGIN
+        self.resolution = RESOLUTION
+        self.grid_height, self.grid_width = self.grid.shape
+        self.map_recebido = True
           
         # --- 3. ROBOT STATE AND CONTROL GAINS --- 
 
@@ -94,8 +136,21 @@ class Diff_SPH(Node):
             
             self.get_logger().info(f"Partícula {i} criada em ({x:.3f}, {y:.3f})")
 
-        # Initialize target potential (Assuming a 2D target at x=4, y=4) 
-        # self.pot = Potential(xc=0.5, yc=0.05, R= 0.05) 
+        # --- INTEGRAÇÃO DO MAPA COMO PARTÍCULAS FIXAS ---
+        for r in range(self.grid_height):
+            for c in range(self.grid_width):
+                if self.grid[r, c] == 1:
+                    # Converte os índices da matriz de volta para coordenadas globais
+                    obs_x = (c * self.resolution) + self.origin_x
+                    obs_y = (r * self.resolution) + self.origin_y
+                    
+                    p_obs = Particle(id=f"obs_{r}_{c}", x=obs_x, y=obs_y, m=1000.0)
+                    p_obs.fixed = True  # Define como obstáculo estático
+                    self.particles.append(p_obs)
+                    
+        self.get_logger().info(f"Mapa carregado: {len(self.particles) - self.num_robots} partículas de parede criadas.")
+
+        # Initialize target potential
         self.pot = Potential(xc=self.goal_x, yc=self.goal_y, R=1)
         # --- 5. ROS 2 PUBLISHERS & SUBSCRIBERS --- 
         self.pubs = [] 
@@ -114,7 +169,6 @@ class Diff_SPH(Node):
             sub = self.create_subscription(Odometry, f'/robot_{i}/odom', self.create_odom_callback(i), 10)
             self.subs.append(sub)
         self.get_logger().info("Publishers e Subscribers criados.")
-        self.subscription_map = self.create_subscription(OccupancyGrid, '/map', self.map_callback, 10) 
         self.timer = self.create_timer(self.dt, self.control_loop) 
 
         self.get_logger().info(f"Diff_SPH Node Started controlling {self.num_robots} robots.") 
@@ -134,51 +188,6 @@ class Diff_SPH(Node):
             self.odom_recebida[index] = True
         return odom_callback 
 
-    def map_callback(self, msg: OccupancyGrid): 
-        if self.map_recebido: 
-            return 
-
-        self.get_logger().info("Map received! Processing metadata and obstacle particles...") 
-        self.resolution = msg.info.resolution 
-        self.origin_x = msg.info.origin.position.x 
-        self.origin_y = msg.info.origin.position.y 
-        self.grid_width = msg.info.width 
-        self.grid_height = msg.info.height 
-
-        # Processamento do grid 
-        raw_grid = np.array(msg.data, dtype=np.int8).reshape((self.grid_height, self.grid_width)) 
-        self.grid = np.zeros((self.grid_height, self.grid_width), dtype=int) 
-          
-        # Identifica obstáculos (raw_grid > 50 ou desconhecido -1) 
-        obstacle_mask = (raw_grid > 50) | (raw_grid == -1) 
-        self.grid[obstacle_mask] = 1  
-          
-        # --- NOVO: Inicializar partículas de alta densidade para cada obstáculo --- 
-        # Coordenadas onde existe obstáculo 
-        obs_y_indices, obs_x_indices = np.where(self.grid == 1) 
-          
-        # Filtra para não adicionar partículas demais (amostragem, se necessário) 
-        # Aqui adicionamos uma a cada N obstáculos para não sobrecarregar o SPH 
-        stride = 5   
-        for i in range(0, len(obs_x_indices), stride): 
-            x_idx = obs_x_indices[i] 
-            y_idx = obs_y_indices[i] 
-              
-            # Converte de índice do grid para coordenadas reais 
-            real_x = self.origin_x + (x_idx * self.resolution) 
-            real_y = self.origin_y + (y_idx * self.resolution) 
-              
-            # Cria partícula obstáculo (massa alta para alta densidade) 
-            p_obs = Particle(id=f"obs_{i}", x=real_x, y=real_y, m=5000.0) 
-            p_obs.rho = 5000.0 # Alta densidade fixa 
-            p_obs.fixed = True # Dica: você pode adicionar esse atributo na sua classe Particle 
-              
-            self.particles.append(p_obs) 
-
-        self.map_recebido = True 
-
-        self.get_logger().info(f"Mapa processado. {len(self.particles) - self.num_robots} partículas de obstáculo adicionadas.") 
-
     # --- MAIN CONTROL LOOP --- 
     def control_loop(self):
         
@@ -196,11 +205,11 @@ class Diff_SPH(Node):
             # self.particles[i].y = self.robot_y[i] 
             self.particles[i].ext_force = self.pot.force(self.particles[i].x, self.particles[i].y) 
             # TESTE PARA COMPORTAMENTO SEM FORÇA
-            # self.particles[i].ext_force = [0.0, 0.0] 
+            self.particles[i].ext_force = [0.0, 0.0] 
             
         # Atualização da física SPH 
-        # particulas_dinamicas = [p for p in self.particles if not getattr(p, 'fixed', False)] 
-        particulas_dinamicas = self.particles
+        particulas_dinamicas = [p for p in self.particles if not getattr(p, 'fixed', False)] 
+        #particulas_dinamicas = self.particles
         resultados = []
         for p in particulas_dinamicas:
             # Nota: certifique-se que suas funções retornem APENAS o valor, 
@@ -272,17 +281,14 @@ class Diff_SPH(Node):
 
         # --- Graph 1: XY Trajectories over the Map --- 
         plt.subplot(2, 2, 1) 
-        
-        # if self.map_recebido and self.grid is not None:
-        #     map_img = np.zeros((self.grid_height, self.grid_width, 3), dtype=np.uint8)
-        #     map_img[self.grid == 0] = [255, 255, 255]   # livre -> branco
-        #     map_img[self.grid == 1] = [0, 0, 0]         # obstáculo -> preto
-        #     x_min = self.origin_x
-        #     x_max = self.origin_x + self.grid_width * self.resolution 
-        #     y_min = self.origin_y
-        #     y_max = self.origin_y + self.grid_height * self.resolution
 
-        #     plt.imshow(map_img, origin='lower', extent=[x_min, x_max, y_min, y_max], alpha=0.7)
+        # Renderiza a matriz hardcoded como fundo do mapa
+        extent_box = [self.origin_x, self.origin_x + (self.grid_width * self.resolution),
+                      self.origin_y, self.origin_y + (self.grid_height * self.resolution)]
+        
+        # O 'cmap=Greys' exibirá o 0 como branco (livre) e 1 como preto (parede)
+        plt.imshow(self.grid, origin='lower', extent=extent_box, cmap='Greys', alpha=0.3)
+        
         # --- Trajetórias dos robôs ---
         for i in range(self.num_robots):
             plt.plot(self.hist_x_rob[i], self.hist_y_rob[i], label=f'Robô {i}')
@@ -320,19 +326,6 @@ class Diff_SPH(Node):
         plt.xlabel('Tempo (segundos)') 
         plt.ylabel('Pressão') 
         plt.grid(True) 
-
-        # # --- Graph 4: SPH Velocity Magnitude --- 
-        # plt.subplot(2, 2, 4) 
-        # for i in range(self.num_robots): 
-        #     plt.plot(t, self.hist_vel[i], linewidth=1.5, label=f'Robô {i}') 
-        # plt.title('Norma da Velocidade SPH por Drone') 
-        # plt.xlabel('Tempo (segundos)') 
-        # plt.ylabel('Velocidade (m/s)') 
-        # plt.grid(True) 
-
-        # plt.tight_layout() 
-        # self.get_logger().info("Exibindo gráficos de desempenho... Feche a janela para finalizar.") 
-        # plt.show(block=True) 
 
         plt.subplot(2, 2, 4)
         for i in range(self.num_robots):

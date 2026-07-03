@@ -1,0 +1,33 @@
+running egg_info
+writing build/SPH/SPH.egg-info/PKG-INFO
+writing dependency_links to build/SPH/SPH.egg-info/dependency_links.txt
+writing entry points to build/SPH/SPH.egg-info/entry_points.txt
+writing requirements to build/SPH/SPH.egg-info/requires.txt
+writing top-level names to build/SPH/SPH.egg-info/top_level.txt
+reading manifest file 'build/SPH/SPH.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'build/SPH/SPH.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+copying maps/map_complex.yaml -> /home/bruno/Plan_mov_TPfinal/install/SPH/share/SPH/maps
+copying maps/map_mazeold.pgm -> /home/bruno/Plan_mov_TPfinal/install/SPH/share/SPH/maps
+copying maps/map_complex.pgm -> /home/bruno/Plan_mov_TPfinal/install/SPH/share/SPH/maps
+copying maps/map_maze.pgm -> /home/bruno/Plan_mov_TPfinal/install/SPH/share/SPH/maps
+copying maps/map_mazeold.yaml -> /home/bruno/Plan_mov_TPfinal/install/SPH/share/SPH/maps
+copying maps/map_maze.yaml -> /home/bruno/Plan_mov_TPfinal/install/SPH/share/SPH/maps
+copying maps/map_arena_old.pgm -> /home/bruno/Plan_mov_TPfinal/install/SPH/share/SPH/maps
+copying maps/map_arena.pgm -> /home/bruno/Plan_mov_TPfinal/install/SPH/share/SPH/maps
+copying maps/map_arena_old.yaml -> /home/bruno/Plan_mov_TPfinal/install/SPH/share/SPH/maps
+copying maps/map_arena.yaml -> /home/bruno/Plan_mov_TPfinal/install/SPH/share/SPH/maps
+running install_egg_info
+removing '/home/bruno/Plan_mov_TPfinal/install/SPH/lib/python3.12/site-packages/SPH-0.0.0-py3.12.egg-info' (and everything under it)
+Copying build/SPH/SPH.egg-info to /home/bruno/Plan_mov_TPfinal/install/SPH/lib/python3.12/site-packages/SPH-0.0.0-py3.12.egg-info
+running install_scripts
+Installing basic script to /home/bruno/Plan_mov_TPfinal/install/SPH/lib/SPH
+Installing decentralized script to /home/bruno/Plan_mov_TPfinal/install/SPH/lib/SPH
+Installing diff_sph script to /home/bruno/Plan_mov_TPfinal/install/SPH/lib/SPH
+Installing occupancy_grid script to /home/bruno/Plan_mov_TPfinal/install/SPH/lib/SPH
+writing list of installed files to '/home/bruno/Plan_mov_TPfinal/build/SPH/install.log'

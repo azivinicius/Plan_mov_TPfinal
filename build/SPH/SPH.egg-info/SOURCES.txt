@@ -6,7 +6,6 @@ SPH/__init__.py
 SPH/basic_potential.py
 SPH/decentralized.py
 SPH/diff_sph.py
-SPH/occupancy_grid.py
 SPH/particle.py
 SPH/potential.py
 SPH/potential2.py
@@ -37,6 +36,3 @@ urdf/robot.urdf.xacro
 worlds/tpf_arena.world
 worlds/tpf_arena02.world
 worlds/tpf_simple.world
-worlds/meshes/map_arena.stl
-worlds/meshes/map_comp.stl
-worlds/meshes/map_simple.stl
