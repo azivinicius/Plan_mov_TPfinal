@@ -132,7 +132,7 @@ class Diff_SPH(Node):
             self.spawn_y.append(y)
             
             # Cria a partícula com a posição de spawn
-            p = Particle(id=str(i), x=x, y=y, m=2000.0)
+            p = Particle(id=str(i), x=x, y=y, m=1000.0)
             self.particles.append(p)
             
             self.get_logger().info(f"Partícula {i} criada em ({x:.3f}, {y:.3f})")

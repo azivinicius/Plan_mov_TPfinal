@@ -62,23 +62,20 @@ def viscosity(qi,qj):
 
 class Particle:
     def __init__(self,id,x,y,m):    
-
         self.id = id
-
         self.x = x
         self.y = y
 
-        self.h = 10
-
+        # VALORES CORRIGIDOS E BALANCEADOS
+        self.h = 0.674            # Raio de influência
         self.m = m
-        self.rho = 1000.0
-        self.ext_force = [0.0, 0.0]
+        self.rho = self.rho_0 = 1000.0   # Densidade de referência
+        self.B = 5000.0        # Rigidez fixa
         
-        self.e = 1.0
-        self.B = 3*(200 * self.rho * 9.8 * (1/98)) / 1
-        self.P = self.B*((self.rho/1000)**1 -1)
-
-        self.c =  math.sqrt(1*(self.P+self.B)/self.rho)
+        self.ext_force = [0.0, 0.0]
+        self.vel = [0.0,  0.0]
+        self.P = 0.0
+        self.c = 0.0
         self.e = 1.0
 
         self.vel = [0.0,  0.0]
@@ -93,7 +90,7 @@ class Particle:
         return math.sqrt((self.vel[0])**2 + (self.vel[1])**2)
     
     def next_rho(self, q_list):
-        pi = 0.0
+        pi = self.m * W(self, self)
         
         for q in q_list:
             if q.id == self.id:
@@ -108,10 +105,9 @@ class Particle:
             self.P = 0.0
             self.c = 0.0
             return 0.0
-        self.B =  3*(200 * self.rho * 9.8 * (1/98)) / 1 
-        P = self.B * ((self.rho / 1000.0) - 1.0)   
+        P = self.B * ((self.rho / self.rho_0) - 1.0)
         self.c = math.sqrt((P + self.B) / self.rho)  
-        # self.P = P
+        self.P = P
 
         return P
 
@@ -175,8 +171,7 @@ class Particle:
             if self.rho < 1e-6:
                 P = 0.0
                 self.c = 0.0
-            
-            self.B = 20.0 * self.rho          
+
             P = self.B * ((self.rho / 1000.0) - 1.0)   
             self.c = math.sqrt((P + self.B) / self.rho)  
 

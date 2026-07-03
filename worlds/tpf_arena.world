@@ -38,18 +38,19 @@
 
     <model name="goal_marker">
       <static>true</static>
-      <pose>9.0 9.0 0.1 0 0 0</pose>
+      <pose>9.0 9.0 0.01 0 0 0</pose>
       <link name="link">
         <visual name="visual">
           <geometry>
-            <sphere>
-              <radius>0.15</radius>
-            </sphere>
+            <cylinder>
+              <radius>1.0</radius>
+              <length>0.02</length>
+            </cylinder>
           </geometry>
           <material>
-            <ambient>1.0 0.0 0.0 1.0</ambient>
-            <diffuse>1.0 0.0 0.0 1.0</diffuse>
-            <specular>0.5 0.5 0.5 1.0</specular>
+            <ambient>0.0 1.0 0.0 1.0</ambient>
+            <diffuse>0.0 1.0 0.0 1.0</diffuse>
+            <specular>0.1 0.1 0.1 1.0</specular>
           </material>
         </visual>
       </link>
