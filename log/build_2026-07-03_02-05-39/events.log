@@ -1,0 +1,105 @@
+[0.000000] (-) TimerEvent: {}
+[0.000898] (SPH) JobQueued: {'identifier': 'SPH', 'dependencies': OrderedDict()}
+[0.001047] (SPH) JobStarted: {'identifier': 'SPH'}
+[0.097328] (-) TimerEvent: {}
+[0.197859] (-) TimerEvent: {}
+[0.298394] (-) TimerEvent: {}
+[0.399029] (-) TimerEvent: {}
+[0.499569] (-) TimerEvent: {}
+[0.600045] (-) TimerEvent: {}
+[0.700566] (-) TimerEvent: {}
+[0.801075] (-) TimerEvent: {}
+[0.901642] (-) TimerEvent: {}
+[1.002233] (-) TimerEvent: {}
+[1.102788] (-) TimerEvent: {}
+[1.203390] (-) TimerEvent: {}
+[1.304032] (-) TimerEvent: {}
+[1.404605] (-) TimerEvent: {}
+[1.505164] (-) TimerEvent: {}
+[1.605734] (-) TimerEvent: {}
+[1.706315] (-) TimerEvent: {}
+[1.806963] (-) TimerEvent: {}
+[1.907554] (-) TimerEvent: {}
+[2.008131] (-) TimerEvent: {}
+[2.108767] (-) TimerEvent: {}
+[2.209353] (-) TimerEvent: {}
+[2.309995] (-) TimerEvent: {}
+[2.410579] (-) TimerEvent: {}
+[2.511146] (-) TimerEvent: {}
+[2.611771] (-) TimerEvent: {}
+[2.712330] (-) TimerEvent: {}
+[2.812955] (-) TimerEvent: {}
+[2.913528] (-) TimerEvent: {}
+[3.014086] (-) TimerEvent: {}
+[3.114688] (-) TimerEvent: {}
+[3.215285] (-) TimerEvent: {}
+[3.316011] (-) TimerEvent: {}
+[3.416682] (-) TimerEvent: {}
+[3.517270] (-) TimerEvent: {}
+[3.617923] (-) TimerEvent: {}
+[3.718568] (-) TimerEvent: {}
+[3.819262] (-) TimerEvent: {}
+[3.920163] (-) TimerEvent: {}
+[3.940934] (SPH) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', 'build/SPH', 'build', '--build-base', '/home/azivinicius/ros2_ws/src/SPH/build/SPH/build', 'install', '--record', '/home/azivinicius/ros2_ws/src/SPH/build/SPH/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/azivinicius/ros2_ws/src/SPH', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'azivinicius', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/azivinicius', 'OLDPWD': '/home/azivinicius', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2924', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/azivinicius/ros2_ws/src/SPH/install:/home/azivinicius/rob_mov_TP01/install:/home/azivinicius/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'azivinicius', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'azivinicius', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': ':/home/azivinicius/rob_mov_TP01/src/turtlebot3_simulations/turtlebot3_gazebo/models', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/azivinicius/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/azivinicius-Lenovo-IdeaPad-S145-15IWL:@/tmp/.ICE-unix/2877,unix/azivinicius-Lenovo-IdeaPad-S145-15IWL:/tmp/.ICE-unix/2877', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/ecc806b5_027d_4c87_bc0c_02ec5b88b5c4', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.102', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/azivinicius/ros2_ws/install/SPH:/home/azivinicius/rob_mov_TP01/install/robo_controller:/home/azivinicius/ros2_ws/src/SPH/install/SPH:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/azivinicius/ros2_ws/src/SPH/build/SPH', 'TURTLEBOT3_MODEL': 'burger', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/azivinicius/ros2_ws/src/SPH/build/SPH/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages:/home/azivinicius/crazyflie-firmware/build:/home/azivinicius/ros2_ws/install/SPH/lib/python3.12/site-packages:/home/azivinicius/rob_mov_TP01/install/robo_controller/lib/python3.12/site-packages:/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[4.020370] (-) TimerEvent: {}
+[4.121026] (-) TimerEvent: {}
+[4.221724] (-) TimerEvent: {}
+[4.322450] (-) TimerEvent: {}
+[4.423159] (-) TimerEvent: {}
+[4.523896] (-) TimerEvent: {}
+[4.624536] (-) TimerEvent: {}
+[4.725212] (-) TimerEvent: {}
+[4.825896] (-) TimerEvent: {}
+[4.926499] (-) TimerEvent: {}
+[5.027036] (-) TimerEvent: {}
+[5.127742] (-) TimerEvent: {}
+[5.228370] (-) TimerEvent: {}
+[5.329020] (-) TimerEvent: {}
+[5.429600] (-) TimerEvent: {}
+[5.514218] (SPH) StdoutLine: {'line': b'running egg_info\n'}
+[5.529803] (-) TimerEvent: {}
+[5.630409] (-) TimerEvent: {}
+[5.644054] (SPH) StdoutLine: {'line': b'writing build/SPH/SPH.egg-info/PKG-INFO\n'}
+[5.645085] (SPH) StdoutLine: {'line': b'writing dependency_links to build/SPH/SPH.egg-info/dependency_links.txt\n'}
+[5.646226] (SPH) StdoutLine: {'line': b'writing entry points to build/SPH/SPH.egg-info/entry_points.txt\n'}
+[5.647025] (SPH) StdoutLine: {'line': b'writing requirements to build/SPH/SPH.egg-info/requires.txt\n'}
+[5.647707] (SPH) StdoutLine: {'line': b'writing top-level names to build/SPH/SPH.egg-info/top_level.txt\n'}
+[5.730618] (-) TimerEvent: {}
+[5.831265] (-) TimerEvent: {}
+[5.909171] (SPH) StdoutLine: {'line': b"reading manifest file 'build/SPH/SPH.egg-info/SOURCES.txt'\n"}
+[5.910659] (SPH) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[5.913908] (SPH) StdoutLine: {'line': b"writing manifest file 'build/SPH/SPH.egg-info/SOURCES.txt'\n"}
+[5.914876] (SPH) StdoutLine: {'line': b'running build\n'}
+[5.915392] (SPH) StdoutLine: {'line': b'running build_py\n'}
+[5.916198] (SPH) StdoutLine: {'line': b'copying SPH/particle.py -> /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH\n'}
+[5.917861] (SPH) StdoutLine: {'line': b'running install\n'}
+[5.931498] (-) TimerEvent: {}
+[5.946860] (SPH) StdoutLine: {'line': b'running install_lib\n'}
+[6.031670] (-) TimerEvent: {}
+[6.078698] (SPH) StdoutLine: {'line': b'copying /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH/particle.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH\n'}
+[6.082231] (SPH) StdoutLine: {'line': b'byte-compiling /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH/particle.py to particle.cpython-312.pyc\n'}
+[6.091360] (SPH) StdoutLine: {'line': b'running install_data\n'}
+[6.092275] (SPH) StdoutLine: {'line': b'copying launch/diff.launch.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/launch\n'}
+[6.094473] (SPH) StdoutLine: {'line': b'running install_egg_info\n'}
+[6.131876] (-) TimerEvent: {}
+[6.230511] (SPH) StdoutLine: {'line': b"removing '/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH-0.0.0-py3.12.egg-info' (and everything under it)\n"}
+[6.231883] (SPH) StdoutLine: {'line': b'Copying build/SPH/SPH.egg-info to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH-0.0.0-py3.12.egg-info\n'}
+[6.232525] (-) TimerEvent: {}
+[6.236091] (SPH) StdoutLine: {'line': b'running install_scripts\n'}
+[6.332694] (-) TimerEvent: {}
+[6.433321] (-) TimerEvent: {}
+[6.533986] (-) TimerEvent: {}
+[6.634641] (-) TimerEvent: {}
+[6.735276] (-) TimerEvent: {}
+[6.835924] (-) TimerEvent: {}
+[6.936560] (-) TimerEvent: {}
+[7.024669] (SPH) StdoutLine: {'line': b'Installing basic script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH\n'}
+[7.025531] (SPH) StdoutLine: {'line': b'Installing decentralized script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH\n'}
+[7.026253] (SPH) StdoutLine: {'line': b'Installing diff_sph script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH\n'}
+[7.027075] (SPH) StdoutLine: {'line': b'Installing occupancy_grid script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH\n'}
+[7.028644] (SPH) StdoutLine: {'line': b"writing list of installed files to '/home/azivinicius/ros2_ws/src/SPH/build/SPH/install.log'\n"}
+[7.036719] (-) TimerEvent: {}
+[7.137483] (-) TimerEvent: {}
+[7.149378] (SPH) CommandEnded: {'returncode': 0}
+[7.188631] (SPH) JobEnded: {'identifier': 'SPH', 'rc': 0}
+[7.192007] (-) EventReactorShutdown: {}

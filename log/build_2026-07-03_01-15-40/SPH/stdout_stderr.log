@@ -1,0 +1,75 @@
+running egg_info
+creating build/SPH/SPH.egg-info
+writing build/SPH/SPH.egg-info/PKG-INFO
+writing dependency_links to build/SPH/SPH.egg-info/dependency_links.txt
+writing entry points to build/SPH/SPH.egg-info/entry_points.txt
+writing requirements to build/SPH/SPH.egg-info/requires.txt
+writing top-level names to build/SPH/SPH.egg-info/top_level.txt
+writing manifest file 'build/SPH/SPH.egg-info/SOURCES.txt'
+reading manifest file 'build/SPH/SPH.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'build/SPH/SPH.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/azivinicius/ros2_ws/src/SPH/build/SPH/build
+creating /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib
+creating /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH
+copying SPH/potential2.py -> /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH
+copying SPH/diff_sph.py -> /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH
+copying SPH/potential.py -> /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH
+copying SPH/basic_potential.py -> /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH
+copying SPH/particle.py -> /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH
+copying SPH/decentralized.py -> /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH
+copying SPH/__init__.py -> /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH
+running install
+running install_lib
+creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH
+copying /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH/potential2.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH
+copying /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH/diff_sph.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH
+copying /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH/potential.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH
+copying /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH/basic_potential.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH
+copying /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH/particle.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH
+copying /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH/decentralized.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH
+copying /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH/__init__.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH
+byte-compiling /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH/potential2.py to potential2.cpython-312.pyc
+byte-compiling /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH/diff_sph.py to diff_sph.cpython-312.pyc
+byte-compiling /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH/potential.py to potential.cpython-312.pyc
+byte-compiling /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH/basic_potential.py to basic_potential.cpython-312.pyc
+byte-compiling /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH/particle.py to particle.cpython-312.pyc
+byte-compiling /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH/decentralized.py to decentralized.cpython-312.pyc
+byte-compiling /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH/__init__.py to __init__.cpython-312.pyc
+running install_data
+creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/ament_index
+creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/ament_index/resource_index
+creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/ament_index/resource_index/packages
+copying resource/SPH -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/ament_index/resource_index/packages
+copying package.xml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH
+creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/launch
+copying launch/decentralized.launch.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/launch
+copying launch/diff.launch.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/launch
+creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds
+copying worlds/tpf_simple.world -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds
+copying worlds/tpf_arena02.world -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds
+copying worlds/tpf_arena.world -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds
+creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/worlds/meshes
+creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+copying maps/map_arena.pgm -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+copying maps/map_complex.yaml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+copying maps/map_arena.yaml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+copying maps/map_maze.pgm -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+copying maps/map_maze.yaml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+copying maps/map_arena_old.yaml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+copying maps/map_mazeold.yaml -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+copying maps/map_arena_old.pgm -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+copying maps/map_mazeold.pgm -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+copying maps/map_complex.pgm -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/maps
+creating /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/urdf
+copying urdf/robot.urdf.xacro -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/share/SPH/urdf
+running install_egg_info
+Copying build/SPH/SPH.egg-info to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH-0.0.0-py3.12.egg-info
+running install_scripts
+Installing basic script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+Installing decentralized script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+Installing diff_sph script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+Installing occupancy_grid script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+writing list of installed files to '/home/azivinicius/ros2_ws/src/SPH/build/SPH/install.log'

@@ -4,7 +4,7 @@ import math
 class Potential:
     def __init__(self, xc=0.0, yc=0.0, R=1.0):
         self.xc = xc
-        self.yc = yc   
+        self.yc = yc
         self.R = R
 
 
@@ -17,22 +17,24 @@ class Potential:
 
     def grad_phi(self, x, y):
         s_val = self.s(x, y)
-        
+
         grad_s = np.array([2.0 * (x - self.xc) / self.R**2,
                            2.0 * (y - self.yc) / self.R**2])
         # grad phi = 2 s grad(s)
         return 2.0 * s_val * grad_s
 
-    def force(self, x, y, beta=1, k = 2):
+    def force(self, x, y, beta=1, k = 50.0):
     #def force(self, x, y, beta=3, k = 50):
-        g = self.grad_phi(x, y)      
+        g = self.grad_phi(x, y)
         norm_g = math.sqrt(g[0]**2 + g[1]**2)
-        #norm_g = 1 
-        if norm_g < 1e-9:      
+        #norm_g = 1
+        if norm_g < 1e-9:
             return np.zeros(2)
-        f = -k*g / (norm_g ** beta)  
-        if f <= -1: f=-1
-        if f >= 1: f=1 
+        f = -k*g / (norm_g ** beta)
+        # Safe magnitude saturation (keeps direction unchanged)
+        # norm_f = math.sqrt(f[0]**2 + f[1]**2)
+        # if norm_f > max_force:
+        #     f = f * (max_force / norm_f)
 
-        return f  
-    
+
+        return f

@@ -47,12 +47,12 @@ class Potential:
         return [dVdx, dVdy]
     
     def force(self, x, y, z=0):
-        G  = 1
+        G  = 2.5
 
         dV = self.grad_V(x,y)  
         grad_a1 = self.grad_alpha1(x,y)
 
-        H = 0.7
+        H = 0.4
         fx_circ = H * (-grad_a1[1])
         fy_circ = H * ( grad_a1[0])
 

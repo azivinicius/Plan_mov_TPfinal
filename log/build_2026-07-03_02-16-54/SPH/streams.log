@@ -1,0 +1,28 @@
+[4.039s] Invoking command in '/home/azivinicius/ros2_ws/src/SPH': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/azivinicius/ros2_ws/src/SPH/build/SPH/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/SPH build --build-base /home/azivinicius/ros2_ws/src/SPH/build/SPH/build install --record /home/azivinicius/ros2_ws/src/SPH/build/SPH/install.log --single-version-externally-managed install_data
+[5.539s] running egg_info
+[5.667s] writing build/SPH/SPH.egg-info/PKG-INFO
+[5.668s] writing dependency_links to build/SPH/SPH.egg-info/dependency_links.txt
+[5.668s] writing entry points to build/SPH/SPH.egg-info/entry_points.txt
+[5.669s] writing requirements to build/SPH/SPH.egg-info/requires.txt
+[5.670s] writing top-level names to build/SPH/SPH.egg-info/top_level.txt
+[5.926s] reading manifest file 'build/SPH/SPH.egg-info/SOURCES.txt'
+[5.927s] adding license file 'LICENSE'
+[5.931s] writing manifest file 'build/SPH/SPH.egg-info/SOURCES.txt'
+[5.931s] running build
+[5.932s] running build_py
+[5.933s] copying SPH/potential2.py -> /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH
+[5.934s] running install
+[5.964s] running install_lib
+[6.090s] copying /home/azivinicius/ros2_ws/src/SPH/build/SPH/build/lib/SPH/potential2.py -> /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH
+[6.094s] byte-compiling /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH/potential2.py to potential2.cpython-312.pyc
+[6.100s] running install_data
+[6.102s] running install_egg_info
+[6.237s] removing '/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH-0.0.0-py3.12.egg-info' (and everything under it)
+[6.238s] Copying build/SPH/SPH.egg-info to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages/SPH-0.0.0-py3.12.egg-info
+[6.242s] running install_scripts
+[7.019s] Installing basic script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+[7.020s] Installing decentralized script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+[7.021s] Installing diff_sph script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+[7.022s] Installing occupancy_grid script to /home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/SPH
+[7.023s] writing list of installed files to '/home/azivinicius/ros2_ws/src/SPH/build/SPH/install.log'
+[7.137s] Invoked command in '/home/azivinicius/ros2_ws/src/SPH' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/azivinicius/ros2_ws/src/SPH/build/SPH/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/azivinicius/ros2_ws/src/SPH/install/SPH/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/SPH build --build-base /home/azivinicius/ros2_ws/src/SPH/build/SPH/build install --record /home/azivinicius/ros2_ws/src/SPH/build/SPH/install.log --single-version-externally-managed install_data

@@ -23,9 +23,9 @@ class Diff_SPH(Node):
         self.declare_parameter('num_robots', 6) 
           
         # Retrieve the value passed by the launch file 
-        self.num_robots = self.get_parameter('num_robots').value 
+        self.num_robots = self.get_parameter('num_robots').value
           
-        self.dt = 0.05 
+        self.dt = 0.02
           
         # --- 2. MAP INFRASTRUCTURE --- 
         self.map_recebido = False 
@@ -66,24 +66,37 @@ class Diff_SPH(Node):
         self.hist_rho = [[] for _ in range(self.num_robots)] 
         self.hist_P = [[] for _ in range(self.num_robots)] 
         self.hist_vel = [[] for _ in range(self.num_robots)] 
+
+        self.hist_x_sph = [[] for _ in range(self.num_robots)]
+        self.hist_y_sph = [[] for _ in range(self.num_robots)]
           
-        # --- 4. SPH INITIALIZATION --- 
-        self.particles = [] 
-        n_side = int(math.ceil(math.sqrt(self.num_robots))) 
-        pos = np.linspace(-2.0, 2.0, n_side) 
-          
-        idx = 0 
-        for i in range(n_side): 
-            for j in range(n_side): 
-                if idx < self.num_robots: 
-                    # particle.py expects: Particle(id, x, y, m) 
-                    p = Particle(id=str(idx), x=pos[i], y=pos[j], m=3000.0) 
-                    self.particles.append(p) 
-                    idx += 1 
-                      
+                # --- 4. SPH INITIALIZATION --- 
+        self.particles = []
+        self.odom_recebida = [False] * self.num_robots
+        
+        self.spawn_x = []
+        self.spawn_y = []
+
+        # Corrija o loop: declare e leia dentro dele
+        for i in range(self.num_robots):
+            self.declare_parameter(f'spawn_x_{i}', 0.0)
+            self.declare_parameter(f'spawn_y_{i}', 0.0)
+            
+            x = float(self.get_parameter(f'spawn_x_{i}').value)
+            y = float(self.get_parameter(f'spawn_y_{i}').value)
+            
+            self.spawn_x.append(x)
+            self.spawn_y.append(y)
+            
+            # Cria a partícula com a posição de spawn
+            p = Particle(id=str(i), x=x, y=y, m=2000.0)
+            self.particles.append(p)
+            
+            self.get_logger().info(f"Partícula {i} criada em ({x:.3f}, {y:.3f})")
+
         # Initialize target potential (Assuming a 2D target at x=4, y=4) 
         # self.pot = Potential(xc=0.5, yc=0.05, R= 0.05) 
-        self.pot = Potential(xc=self.goal_x, yc=self.goal_y, R=0.25)
+        self.pot = Potential(xc=self.goal_x, yc=self.goal_y, R=0.5)
         # --- 5. ROS 2 PUBLISHERS & SUBSCRIBERS --- 
         self.pubs = [] 
         self.subs = [] 
@@ -110,13 +123,15 @@ class Diff_SPH(Node):
     def create_odom_callback(self, index): 
         """Generates a dedicated odometry callback for a specific robot index.""" 
         def odom_callback(msg: Odometry): 
-            self.robot_x[index] = msg.pose.pose.position.x 
-            self.robot_y[index] = msg.pose.pose.position.y 
-              
+            # self.robot_x[index] = msg.pose.pose.position.x 
+            # self.robot_y[index] = msg.pose.pose.position.y 
+            self.robot_x[index] = self.spawn_x[index] + msg.pose.pose.position.x
+            self.robot_y[index] = self.spawn_y[index] + msg.pose.pose.position.y
             q = msg.pose.pose.orientation 
             siny_cosp = 2 * (q.w * q.z + q.x * q.y) 
             cosy_cosp = 1 - 2 * (q.y * q.y + q.z * q.z) 
-            self.robot_theta[index] = math.atan2(siny_cosp, cosy_cosp) 
+            self.robot_theta[index] = math.atan2(siny_cosp, cosy_cosp)
+            self.odom_recebida[index] = True
         return odom_callback 
 
     def map_callback(self, msg: OccupancyGrid): 
@@ -154,7 +169,7 @@ class Diff_SPH(Node):
             real_y = self.origin_y + (y_idx * self.resolution) 
               
             # Cria partícula obstáculo (massa alta para alta densidade) 
-            p_obs = Particle(id=f"obs_{i}", x=real_x, y=real_y, m=1500.0) 
+            p_obs = Particle(id=f"obs_{i}", x=real_x, y=real_y, m=5000.0) 
             p_obs.rho = 5000.0 # Alta densidade fixa 
             p_obs.fixed = True # Dica: você pode adicionar esse atributo na sua classe Particle 
               
@@ -165,7 +180,12 @@ class Diff_SPH(Node):
         self.get_logger().info(f"Mapa processado. {len(self.particles) - self.num_robots} partículas de obstáculo adicionadas.") 
 
     # --- MAIN CONTROL LOOP --- 
-    def control_loop(self): 
+    def control_loop(self):
+        
+        if len(self.particles) < self.num_robots:
+            return
+        if not all(self.odom_recebida):
+            return
         # Registro de tempo  
         tempo_atual = self.get_clock().now().nanoseconds / 1e9 
         self.hist_tempo.append(tempo_atual) 
@@ -174,9 +194,9 @@ class Diff_SPH(Node):
         for i in range(self.num_robots): 
             # self.particles[i].x = self.robot_x[i] 
             # self.particles[i].y = self.robot_y[i] 
-            # self.particles[i].ext_force = self.pot.force(self.particles[i].x, self.particles[i].y) 
+            self.particles[i].ext_force = self.pot.force(self.particles[i].x, self.particles[i].y) 
             # TESTE PARA COMPORTAMENTO SEM FORÇA
-            self.particles[i].ext_force = [0.0, 0.0] 
+            # self.particles[i].ext_force = [0.0, 0.0] 
             
         # Atualização da física SPH 
         # particulas_dinamicas = [p for p in self.particles if not getattr(p, 'fixed', False)] 
@@ -196,32 +216,40 @@ class Diff_SPH(Node):
 
         # 2. COMPUTE AND PUBLISH ROBOT COMMANDS (Controle por aceleração/força) 
         for i in range(self.num_robots): 
-            # Aceleração ditada pela física SPH + Força Externa 
+            self.hist_x_sph[i].append(self.particles[i].x)
+            self.hist_y_sph[i].append(self.particles[i].y)
+
             ex = self.particles[i].x - self.robot_x[i]
-            ey = self.particles[i].y - self.robot_y[i] 
-            
-            k = 0.2
+            ey = self.particles[i].y - self.robot_y[i]
+            k = 5
+            vx_ref = self.particles[i].vel[0] + k * ex
+            vy_ref = self.particles[i].vel[1] + k * ey
 
-            vx_ref = self.particles[i].vel[0] +  k*ex
-            vy_ref = self.particles[i].vel[1] + k*ey
+            rtheta = self.robot_theta[i]
+            v_ref = vx_ref * math.cos(rtheta) + vy_ref * math.sin(rtheta)
+            w_ref = (1.0 / self.d) * (-vx_ref * math.sin(rtheta) + vy_ref * math.cos(rtheta))
 
-            # Transformar para v (linear) e w (angular) 
-            rx, ry, rtheta = self.robot_x[i], self.robot_y[i], self.robot_theta[i] 
+            self.hist_x_rob[i].append(self.robot_x[i])
+            self.hist_y_rob[i].append(self.robot_y[i])
+            self.hist_rho[i].append(self.particles[i].rho)
+            self.hist_P[i].append(self.particles[i].P)
+            self.hist_vel[i].append(self.particles[i].vel_norm())
 
-            v_ref = vx_ref * math.cos(rtheta) + vy_ref * math.sin(rtheta) 
-            w_ref = (1.0 / self.d) * (-vx_ref * math.sin(rtheta) + vy_ref * math.cos(rtheta)) 
+            # Impressão APENAS para este robô (sem loop interno)
+            dist = math.hypot(ex, ey)
+            print(f"Robô {i:2d}: partícula ({self.particles[i].x:7.3f}, {self.particles[i].y:7.3f}) | "
+      f"robô     ({self.robot_x[i]:7.3f}, {self.robot_y[i]:7.3f}) | "
+      f"erro ({ex:7.3f}, {ey:7.3f}) | dist {dist:7.3f} | "
+      f"v_ref={v_ref:6.3f} w_ref={w_ref:6.3f}")
+            print(f"Robô {i}: partícula ({self.particles[i].x:.3f}, {self.particles[i].y:.3f}) | "
+                f"vel ({self.particles[i].vel[0]:.3f}, {self.particles[i].vel[1]:.3f}) | "
+                f"robô ({self.robot_x[i]:.3f}, {self.robot_y[i]:.3f})")
+            print(f"  -> v_ref={v_ref:.3f}, w_ref={w_ref:.3f}")
 
-            # --- HISTÓRICO MANTIDO --- 
-            self.hist_x_rob[i].append(rx) 
-            self.hist_y_rob[i].append(ry) 
-            self.hist_rho[i].append(self.particles[i].rho) 
-            self.hist_P[i].append(self.particles[i].P) 
-            self.hist_vel[i].append(self.particles[i].vel_norm())  # Certifique-se que este método existe na classe Particle 
-
-            # Publicação 
-            twist = Twist() 
-            twist.linear.x = float(np.clip(v_ref, -0.5, 0.5)) 
-            twist.angular.z = float(np.clip(w_ref, -1.0, 1.0)) 
+            # Publicação APENAS para este robô
+            twist = Twist()
+            twist.linear.x = float(np.clip(v_ref, -0.5, 0.5))
+            twist.angular.z = float(np.clip(w_ref, -1.0, 1.0))
             self.pubs[i].publish(twist)
 
 
@@ -293,14 +321,27 @@ class Diff_SPH(Node):
         plt.ylabel('Pressão') 
         plt.grid(True) 
 
-        # --- Graph 4: SPH Velocity Magnitude --- 
-        plt.subplot(2, 2, 4) 
-        for i in range(self.num_robots): 
-            plt.plot(t, self.hist_vel[i], linewidth=1.5, label=f'Robô {i}') 
-        plt.title('Norma da Velocidade SPH por Drone') 
-        plt.xlabel('Tempo (segundos)') 
-        plt.ylabel('Velocidade (m/s)') 
-        plt.grid(True) 
+        # # --- Graph 4: SPH Velocity Magnitude --- 
+        # plt.subplot(2, 2, 4) 
+        # for i in range(self.num_robots): 
+        #     plt.plot(t, self.hist_vel[i], linewidth=1.5, label=f'Robô {i}') 
+        # plt.title('Norma da Velocidade SPH por Drone') 
+        # plt.xlabel('Tempo (segundos)') 
+        # plt.ylabel('Velocidade (m/s)') 
+        # plt.grid(True) 
+
+        # plt.tight_layout() 
+        # self.get_logger().info("Exibindo gráficos de desempenho... Feche a janela para finalizar.") 
+        # plt.show(block=True) 
+
+        plt.subplot(2, 2, 4)
+        for i in range(self.num_robots):
+            plt.plot(self.hist_x_sph[i], self.hist_y_sph[i], linewidth=1.5, label=f'Partícula {i}')
+        plt.title('Trajetória das Partículas SPH')
+        plt.xlabel('X (metros)')
+        plt.ylabel('Y (metros)')
+        plt.grid(True)
+        plt.axis('equal')
 
         plt.tight_layout() 
         self.get_logger().info("Exibindo gráficos de desempenho... Feche a janela para finalizar.") 

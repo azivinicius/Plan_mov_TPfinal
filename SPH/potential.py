@@ -23,7 +23,7 @@ class Potential:
         # grad phi = 2 s grad(s)
         return 2.0 * s_val * grad_s
 
-    def force(self, x, y, beta=1, k = 30.0):
+    def force(self, x, y, beta=1, k = 50.0):
     #def force(self, x, y, beta=3, k = 50):
         g = self.grad_phi(x, y)
         norm_g = math.sqrt(g[0]**2 + g[1]**2)

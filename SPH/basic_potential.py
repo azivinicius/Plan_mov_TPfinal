@@ -96,7 +96,7 @@ class Diff_SPH(Node):
 
         # Initialize target potential (Assuming a 2D target at x=4, y=4) 
         # self.pot = Potential(xc=0.5, yc=0.05, R= 0.05) 
-        self.pot = Potential(xc=self.goal_x, yc=self.goal_y, R=1.0)
+        self.pot = Potential(xc=self.goal_x, yc=self.goal_y, R=0.5)
         # --- 5. ROS 2 PUBLISHERS & SUBSCRIBERS --- 
         self.pubs = [] 
         self.subs = [] 
